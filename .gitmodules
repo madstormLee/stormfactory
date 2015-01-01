@@ -1,0 +1,3 @@
+[submodule "mad"]
+	path = mad
+	url = https://github.com/madstormLee/mad.git
