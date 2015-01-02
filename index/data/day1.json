@@ -1,0 +1,11 @@
+{
+	"id": "day 1",
+	"title":"stormfactory",
+	"contents": "index/data/day1.html",
+	"info": {
+		"program": "StormFactory",
+		"하는 일": "매일마다 프로그램을 하나씩 Deploy한다.",
+		"목적": "게으른 Madstorm에게 열심히 프로그램을 만들도록 한다....\n 가 아니라,\n 사람들과의 연계를 통해서 새롭고 이로운 프로그램을 계속 만든다.",
+		"결론": " 일단, 입에 침이라도 바르려면...\n 아, 그렇지. github에 넣고 link를 만들면 되겠다.\n \n github 페이지는 <a href='https://github.com/madstormLee/stormfactory'>https://github.com/madstormLee/stormfactory</a>,\n github이 자동으로 만들어주는 페이지는 <a href='http://madstormlee.github.io/stormfactory'>http://madstormlee.github.io/stormfactory</a> 이다.\n \n 정말로 github는 프로그램에만 신경쓰면 되도록 모든 것을 튼실하게 지원해 준다는 생각이 든다.\n"
+	}
+}

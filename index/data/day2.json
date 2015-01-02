@@ -1,0 +1,11 @@
+{
+	"id": "day 2",
+	"title":"index",
+	"contents": "index/data/day2.html",
+	"info": {
+		"program": "index",
+		"하는 일": "page들을 indexing한다.",
+		"목적": "contents와 info를 굳이 철저하게 나누어서 2개의 프로그램을 만든 것 처럼 보이도록 한다...\n 라기 보다는 storm factory를 계속 써 나갈 수 있도록 한다.\n index는 storm factory의 journal이자, status 라고 보면 된다.",
+		"결론": "...은 아직 나지 않았지만, 날자를 넘기는 것은 치사하므로, 일단 올리는 것으로 한다."
+	}
+}

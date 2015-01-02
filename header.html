@@ -1,0 +1,37 @@
+<nav class="top-bar" data-topbar role="navigation">
+	<ul class="title-area">
+		<li class="name"><h1><a id='logo' href="~/">Mad</a></h1></li>
+		<li class="toggle-topbar menu-icon"><a href="~/"><span>Menu</span></a></li>
+	</ul>
+
+	<section class="top-bar-section">
+		<ul class="menu left">
+			<li><a href='~/File'>File</a></li>
+			<li><a href='~/View'>View</a></li>
+			<li><a href='~/History'>History</a></li>
+			<li><a href='~/Tools'>Tools</a></li>
+
+			<? if ( $config->userLog->id ) : ?>
+			<li><a href='~/Backlog/write'>Backlog</a></li>
+			<li><a href='~/User/write'>User</a></li>
+			<li><a href='~/Php'>Php</a></li>
+			<? endif; ?>
+
+			<li class="has-dropdown">
+				<a href='~/Help'>Help</a>
+				<ul class="dropdown">
+					<li><a href="#">First link in dropdown</a></li>
+					<li class="active"><a href="#">Active link in dropdown</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="personal right">
+			<? if ( $config->userLog->id ) : ?>
+			<li><a href='~/SessionUser/logout'>logout</a></li>
+			<? else: ?>
+			<li class="active"><a class='popup' href='~/SessionUser/login'>login</a></li>
+			<? endif; ?>
+		</ul>
+	</section>
+</nav>
