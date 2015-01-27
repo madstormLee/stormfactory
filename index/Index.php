@@ -2,12 +2,10 @@
 class Index extends MadModel {
 	function __construct( $id = '' ) {
 		if ( empty( $id ) ) {
-			$todayId = "day" . (date('z') + 1);
-			if ( is_file( "index/data/$todayId.json" ) ) {
-				$id = $todayId;
-			} else {
-				$id = 'preset';
-			}
+			$id = "day" . (date('z') + 1);
+		}
+		if ( ! is_file( "index/data/$id.json" ) ) {
+			$id = 'preset';
 		}
 		$this->fetch( $id );
 	}

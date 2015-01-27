@@ -1,0 +1,44 @@
+<h1>StormFactory</h1>
+
+<section class='index'>
+	<nav class='button-group round'>
+		<? foreach( glob('index/data/day*.json') as $file ): ?>
+		<? $id = baseName( $file, '.json' ); ?>
+		<a class='small button' href='?id=<?=$id?>'><?=$id?></a>
+		<? endforeach; ?>
+	</nav>
+</section>
+
+<? $model = new Index; ?>
+
+<form class='write' action='./save'>
+	<input type='hidden' id='id' name='id' value='<?=$model->id?>' />
+	<h1>
+		<label for='title'><?=$model->id?></label>
+		<input type='text' id='title' name='title' value='<?=$model->title?>' />
+	</h1>
+
+	<textarea id='contents' name='contents'><?=$model->contents?></textarea>
+
+	<dl>
+		<? foreach( $model->info as $key => $value ): ?>
+		<dt><label for='<?=$key?>'><?=$key?></label></dt>
+		<dd><input type='text' id='<?=$key?>' name='<?=$key?>' placeholder='<?=$key?>' value='<?=$value?>' /></dd>
+		<? endforeach; ?>
+	</dl>
+</form>
+
+
+<? foreach( $model->getIndex() as $row ): ?>
+<section class='view'>
+	<h1><?=$row->id?> : <?=$row->title?></h1>
+	<p><?=$row->contents?></p>
+
+	<dl>
+		<? foreach( $row->info as $key => $value ): ?>
+		<dt><?=$key?></dt>
+		<dd><?=nl2br($value)?></dd>
+		<? endforeach; ?>
+	</dl>
+</section>
+<? endforeach; ?>
