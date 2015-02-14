@@ -22,9 +22,15 @@ class Index extends MadModel {
 		$this->data = $json->getData();
 	}
 	function getIndex() {
+		$days = 10;
+
 		$data = new MadData;
-		$range = range( date('z'), 1, -1 );
-		foreach( $range as $day ) {
+		$start = date('z');
+		$end = $start-10;
+		if ( $end < 1 ) {
+			$end =  1;
+		}
+		foreach( range( $start, $end, -1 ) as $day ) {
 			$dayName = "day$day";
 			$data->$dayName = new self( $dayName );
 		}
