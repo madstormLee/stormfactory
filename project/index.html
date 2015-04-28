@@ -1,0 +1,29 @@
+<h1>Projects</h1>
+
+<section id='left' class='left medium-3 columns'>
+	<h1>STATUS</h1>
+	<ul>
+		<? foreach( $model->getStatuses() as $row ): ?>
+		<li><a href='?status=<?=$row->id?>'><?=$row->label?></a></li>
+		<? endforeach; ?>
+	</ul>
+
+	<h1>CATEGORY</h1>
+	<ul>
+		<? foreach( $model->getCategories() as $row ): ?>
+		<li><a href='?category=<?=$row->id?>'><?=$row->label?></a></li>
+		<? endforeach; ?>
+	</ul>
+</section>
+
+<section id='list' class='left medium-9 columns'>
+	<? foreach( $index = $model->getIndex() as $model ): ?>
+	<dl>
+		<dt class='image'><img src='<?=$model->image?>' width='195px' height='140px' /></dt>
+		<dt class='title'><?=$model->title?></dt>
+		<dd class='info'>
+		...
+		</dd>
+	</dl>
+	<? endforeach; ?>
+</section>

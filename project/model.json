@@ -1,0 +1,128 @@
+{
+	"id": {
+		"id": "id",
+		"name": "id",
+		"label": "id",
+		"type": "integer",
+		"extra": "auto_increment",
+		"key": "primary"
+	},
+	"image": {
+		"id": "image",
+		"name": "image",
+		"label": "Image",
+		"type": "text"
+	},
+	"category": {
+		"id": "category",
+		"name": "category",
+		"label": "Category",
+		"type": "radio",
+		"options": {
+			"28": {
+				"id": "28",
+				"label": "UCAN's Pick"
+			},
+			"27": {
+				"id": "27",
+				"label": "인기투표"
+			},
+			"9": {
+				"id": "9",
+				"label": "만화 &amp; 캐리커쳐 (Comics &amp; Caricature)"
+			},
+			"5": {
+				"id": "5",
+				"label": "음악(Music)"
+			},
+			"2": {
+				"id": "2",
+				"label": "영화 &amp; 비디오(Film &amp; Video)"
+			},
+			"4": {
+				"id": "4",
+				"label": "공연 &amp; 댄스 (Theater &amp; Dance)"
+			},
+			"8": {
+				"id": "8",
+				"label": "게임(Game)"
+			},
+			"3": {
+				"id": "3",
+				"label": "스포츠(Sports)"
+			},
+			"10": {
+				"id": "10",
+				"label": "디자인 &amp; 기술 (Design &amp; Technology)"
+			},
+			"11": {
+				"id": "11",
+				"label": "출판(Publishing)"
+			},
+			"13": {
+				"id": "13",
+				"label": "생활 (Life)"
+			},
+			"7": {
+				"id": "7",
+				"label": "후원(Charity)"
+			},
+			"14": {
+				"id": "14",
+				"label": "미술 &amp; 포토그래피 (Art &amp; Photography)"
+			},
+			"26": {
+				"id": "26",
+				"label": "위드스타(With Star)"
+			},
+			"17": {
+				"id": "17",
+				"label": "사진(photography)"
+			},
+			"20": {
+				"id": "20",
+				"label": "크라우드 쇼핑"
+			},
+			"18": {
+				"id": "18",
+				"label": "과학기술(technology)"
+			}
+		}
+	},
+	"title": {
+		"id": "title",
+		"name": "title",
+		"label": "Title",
+		"type": "text"
+	},
+	"contents": {
+		"id": "contents",
+		"name": "contents",
+		"label": "Contents",
+		"type": "textarea"
+	},
+	"sDate": {
+		"id": "sDate",
+		"name": "sDate",
+		"label": "Start Date",
+		"type": "datetime"
+	},
+	"eDate": {
+		"id": "eDate",
+		"name": "eDate",
+		"label": "End Date",
+		"type": "datetime"
+	},
+	"wDate": {
+		"id": "wDate",
+		"name": "wDate",
+		"label": "Write Date",
+		"type": "datetime"
+	},
+	"uDate": {
+		"id": "uDate",
+		"name": "uDate",
+		"label": "Update Date",
+		"type": "datetime"
+	}
+}

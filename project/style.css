@@ -1,0 +1,16 @@
+#images {
+}
+#images ul {
+	height: 20rem;
+	overflow: auto;
+	list-style: none;
+}
+#images ul li {
+	display: inline-block;
+}
+#images ul li img {
+	cursor: pointer;
+}
+#images ul li a.popup {
+	display: none;
+}

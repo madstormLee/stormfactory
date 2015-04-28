@@ -1,0 +1,49 @@
+<script src='~/mad/vendors/ckeditor/ckeditor.js'></script>
+<script src='./script.js'></script>
+<link rel='stylesheet' href='./style.css' media='all' />
+
+<h1>프로젝트 등록하기</h1>
+
+<form id='write' class='left medium-9 columns' method='post' action='./save'>
+	<? if( is_file( $model->image ) ): ?>
+	<img src='~/<?=$model->image?>' width='195px' height='140px' />
+	<? endif; ?>
+	<label for='image'>Image</label>
+	<input type='text' name='image' id='image' value='<?=$model->image?>' />
+
+	<label for='category'>Category</label>
+	<select id="category" name="category">
+		<option value="">선택</option>
+		<? foreach( $model->getCategories() as $row ): ?>
+		<option value="<?=$row->id?>"><?=$row->label?></option>
+		<? endforeach; ?>
+	</select>
+
+	<label for='title'>Title</label>
+	<input type='text' name='title' id='title' value='<?=$model->title?>' />
+
+	<label for='contents'>Contents</label>
+	<textarea name='contents' id='contents'><?=$model->contents?></textarea>
+
+	<label for='sDate'>Start date</label>
+	<input type='datetime' name='sDate' id='sDate' value='<?=$model->sDate?>' />
+
+	<label for='eDate'>End date</label>
+	<input type='datetime' name='eDate' id='eDate' value='<?=$model->eDate?>' />
+
+	<label for='incruit'>Human Resource</label>
+	<fieldset>
+		<? foreach( $model->getPersona() as $i => $row ): ?>
+		<input type='checkbox' name='persona[<?=$i?>]' id='persona<?=$i?> value='<?=$row->persona?>' />
+		<input type='number' name='quantity[<?=$i?>]' id='quantity<?=$i?>' value='<?=$row->quantity?>' />
+		<? endforeach; ?>
+	</fieldset>
+
+	<button>Create</button>
+
+</form>
+
+<section id='right' class='left medium-9 columns'>
+	<section id='persona' data-href='~/persona'></section>
+	<section id='images' data-href='~/image/list?dir=images'></section>
+</section>
