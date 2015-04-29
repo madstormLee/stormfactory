@@ -1,0 +1,54 @@
+{
+	"id": {
+		"id": "id",
+		"name": "id",
+		"label": "id",
+		"type": "number",
+		"extra": "auto_increment",
+		"key": "primary"
+	},
+	"parentId": {
+		"id": "parentId",
+		"name": "parentId",
+		"label": "parentId",
+		"type": "number",
+		"default": 0
+	},
+	"orderId": {
+		"id": "orderId",
+		"name": "orderId",
+		"label": "orderId",
+		"type": "number",
+		"default": 1
+	},
+	"domain": {
+		"id": "domain",
+		"name": "domain",
+		"label": "domain",
+		"type": "text"
+	},
+	"label": {
+		"id": "label",
+		"name": "label",
+		"label": "label",
+		"type": "text"
+	},
+	"description": {
+		"id": "description",
+		"name": "description",
+		"label": "description",
+		"type": "textarea"
+	},
+	"wDate": {
+		"id": "wDate",
+		"name": "wDate",
+		"label": "write Date",
+		"type": "datetime"
+	},
+	"uDate": {
+		"id": "uDate",
+		"name": "uDate",
+		"label": "update Date",
+		"type": "datetime"
+	}
+}

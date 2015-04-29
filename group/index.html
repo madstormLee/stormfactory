@@ -1,0 +1,18 @@
+<link rel='stylesheet' type='text/css' href='./style.css' />
+
+<h1>Sitemap</h1>
+
+<section id='index' class='tree'>
+<? $treeIterator = function( $tree ) use ( &$treeIterator ) { ?>
+<? foreach( $tree as $row ): ?>
+<dl>
+	<dt class='<?=isset($row->subs)?'subs':''; ?>'>
+	<a href='./?parentId=<?=$row->parentId?>'><?=$row->title?></a>
+	</dt>
+	<? if ( ! empty( $row->subs ) ): ?>
+	<dd class='subs'><? $treeIterator( $row->subs ); ?></dd>
+	<? endif; ?>
+</dl>
+<? endforeach; ?>
+<? }; $treeIterator( $index ); ?>
+</section>

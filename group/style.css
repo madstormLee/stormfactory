@@ -1,0 +1,9 @@
+/********************* section.tree *********************/
+section.tree {
+	padding: 1rem;
+	margin-top: 1rem;
+	border: .5rem solid #999;
+}
+section.tree dl dd.subs {
+	margin-left: 1rem;
+}
