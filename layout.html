@@ -29,14 +29,16 @@
 						<li> <a href='~/project/write'>프로젝트 등록</a> </li>
 						<li> <a href='~/info'>정보 보기</a> </li>
 						<li> <a href='~/board'>커뮤니케이션</a> </li>
+						<? if ( $config->session->user ): ?>
+						<? endif; ?>
 					</ul>
 
 					<ul class="personal right">
 						<? if ( $config->session->user ) : ?>
-						<li><a href='~/mad/user/logout'>logout</a></li>
+						<li><a href='~/user/logout'>logout</a></li>
 						<li><a href='~/mypage'>my page</a></li>
 						<? else: ?>
-						<li class="active"><a href='~/mad/user/login'>login</a></li>
+						<li class="active"><a href='~/user/login'>login</a></li>
 						<? endif; ?>
 					</ul>
 				</section>
