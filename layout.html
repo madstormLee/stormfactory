@@ -35,6 +35,7 @@
 
 					<ul class="personal right">
 						<? if ( $config->session->user ) : ?>
+						<li> <a href='~/install'>install</a> </li>
 						<li><a href='~/user/logout'>logout</a></li>
 						<li><a href='~/mypage'>my page</a></li>
 						<? else: ?>
@@ -53,6 +54,10 @@
 			<? else: ?>
 			<span class='copyrights'><?=$config->info->author?> <?=$config->info->year?>::<?=$config->info->project?></span>
 			<? endif; ?>
+			<ul class='breadcrumbs'>
+				<li> <a href='/wp'>blog</a> </li>
+				<li> <a href='/ziwoo'>ziwoo</a> </li>
+			</ul>
 		</footer>
 	</body>
 </html>
