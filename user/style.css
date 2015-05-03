@@ -1,0 +1,138 @@
+#User ul {
+list-style: none;
+display: inline-block;
+width: 220px;
+border: 3px solid #000;
+padding: 5px;
+}
+#User ul label {
+display: inline-block;
+width: 60px;
+font-size: 9pt;
+background: #ccc;
+text-align: right;
+}
+#User ul input ,
+#User ul nav.group {
+width: 140px;
+}
+#User ul nav.group {
+display: inline-block;
+vertical-align: top;
+}
+#User ul nav.group a {
+font-size: 11px;
+color: #000;
+background: #eef;
+}
+
+
+#UserLogin {
+margin-top: 20px;
+}
+#UserLogin ul {
+list-style: none;
+text-align: center;
+}
+#UserLogin ul li * {
+vertical-align: middle;
+}
+label {
+	display: inline-block;
+	width: 30%;
+	padding: 3px 20px;
+	text-align: right;
+	background: #ccc;
+	font-weight: 600;
+}
+#btnChangePassword {
+	display: inline-block;
+	border: 1px solid #000;
+	border-radius: 10px;
+	padding: 2px 10px;
+	background: #ccf;
+}
+
+#Login {
+border: 2px solid #c1c1c1;
+padding: 1rem;
+background-image: linear-gradient(top, #ffffff 0%, #e4e4e4 100%);
+background-image: -moz-linear-gradient(top, #ffffff 0%, #e4e4e4 100%);
+}
+#Login label {
+	font-weight: 600;
+}
+#Login nav.buttons {
+	margin-top: 1rem;
+	text-align: center;
+}
+
+
+
+/*
+#main {
+margin: 200px auto 0 auto;
+width: 700px;
+min-width: auto;
+padding: 50px;
+border: 5px solid #000000;
+}
+#UserLogin {
+margin-top: 20px;
+}
+#UserLogin ul {
+display: inline-block;
+list-style: none;
+width: 80%;
+font-size: 12px;
+}
+#UserLogin ul li * {
+vertical-align: middle;
+}
+#UserLogin ul li label {
+	display: inline-block;
+	width: 30%;
+	padding: 3px 20px;
+	text-align: right;
+	background: #cccccc;
+	font-weight: 600;
+}
+#UserLogin ul li input {
+width: 50%;
+}
+#UserLogin fieldset {
+font-size: 12px;
+text-align: center;
+border: 1px solid #666666;
+border-radius: 10px;
+padding: 3px 5px;
+}
+#UserLogin fieldset legend {
+background: #ccfccf;
+margin-left: 20px;
+padding: 3px 20px;
+border: 1px solid #666666;
+border-radius: 10px;
+}
+#toggleRight {
+display: none;
+}
+*/
+
+/**************************** buttons ********************************/
+/*
+#UserLogin button {
+width: 18%;
+vertical-align: top;
+height: 60px;
+}
+#UserLogin .buttons a {
+font-size: 12px;
+display: inline-block;
+padding: 3px 10px;
+border: 2px solid #000000;
+border-radius: 5px;
+color: #000000;
+}
+
+*/

@@ -1,0 +1,44 @@
+<h1><?=_("AdminUser Request List")?></h1>
+
+<h2><?=_("전체 관리자 권한")?></h2>
+
+<nav class='component'>
+	<a href='./'><?=_("권한 관리/수정")?></a>
+</nav>
+
+<form id='AdminUserConfirmList' class='list' method='post' action='./mad'>
+
+	<table class='simple'>
+		<thead>
+			<tr>
+				<th><?=_("국가")?></th>
+				<th><?=_("아이디")?></th>
+				<th><?=_("Email")?></th>
+				<th><?=_("요청권한")?></th>
+				<th><?=_("권한 승인")?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<? foreach( $list as $file => $row ): ?>
+			<tr>
+				<td><?=$row->locale?></td>
+				<td><a href='./view?id=<?=$row->id?>'><?=$row->userid?></a></td>
+				<td><?=$row->email?></td>
+				<td><?=$row->levelName?></td>
+				<td class='buttons'>
+					<? foreach( $model->getConfig('level')->data as $level ): ?>
+					<? if ( $level->value <= $g->log->getLevel() ) continue; ?>
+					<a href='./updateLevel?id=<?=$row->id?>&level=<?=$level->value?>'><?=$level->label?></a>
+					<? endforeach; ?>
+					<a href='./deleteAsk?=<?=$file?>'><?=_("Refuse")?></a>
+				</td>
+			</tr>
+			<? endforeach; ?>
+		</tbody>
+	</table>
+
+	<? if ( $list->isEmpty() ) : ?>
+	<p class='notice'><?=_("No searched list.")?></p>
+	<? endif; ?>
+
+</form>

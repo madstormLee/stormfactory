@@ -1,0 +1,28 @@
+{
+	"persona": {
+		"root": {
+			"id": "root",
+			"label": "Root User",
+			"pw": "80e86011b06114f465103f8e35abc247d44027a9",
+			"level": 0
+		},
+		"admin": {
+			"id": "admin",
+			"label": "Admin",
+			"pw": "38f7813461c2f450cb0142e0e5f72a91619e54d9",
+			"level": 1
+		},
+		"member": {
+			"id": "member",
+			"label": "일반 사용자",
+			"pw": "7dd69882525976ec0416a0cfa8f5459c72cf11ff",
+			"level": 200
+		},
+		"user": {
+			"id": "user",
+			"label": "로그인 안된 사용자",
+			"pw": "c8bbfb35608f4be64645e29c1b2ce3b17f9d8e38",
+			"level": 255
+		}
+	}
+}

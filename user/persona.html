@@ -1,0 +1,40 @@
+<h1>Persona</h1>
+
+<nav class='component'>
+	<? if ( ! $list->isEmpty() ): ?>
+	<a href='./login?project=<?=$_SESSION['currentProject']?>'>Persona Login</a>
+	<? endif; ?>
+</nav>
+
+<p class='notice'>
+페르소나는 debug mode에서 작동하는 role을 가진 사람입니다.<br />
+px tools는 persona를 통해서 사용자가 아직 만들어져 있지 않은 경우 여러가지 role을 test해 볼 수 있도록 persona를 제공합니다.
+</p>
+
+<table class='simple'>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Label</th>
+			<th>Password</th>
+			<th>Level</th>
+		</tr>
+	</thead>
+	<tbody>
+	<? foreach( $list as $row ) : ?>
+		<tr>
+			<td><?=$row->id?></td>
+			<td><?=$row->label?></td>
+			<td><?=$row->pw?></td>
+			<td><?=$row->level?></td>
+		</tr>
+	<? endforeach; ?>
+	</tbody>
+</table>
+
+<? if ( $list->isEmpty() ): ?>
+<p class='caution'>
+	현재 프로젝트가 열려있지 않습니다. <a href='~/project'>프로젝트 열기</a>
+</p>
+<? endif; ?>
+

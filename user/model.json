@@ -1,0 +1,81 @@
+{
+	"id": {
+		"id": "id",
+		"name": "id",
+		"type": "integer",
+		"extra": "auto_increment",
+		"key": "primary"
+	},
+	"userId": {
+		"id": "userId",
+		"name": "userId",
+		"type": "text",
+		"max": "20",
+		"constraint": "not null",
+		"key": "unique"
+	},
+	"userPw": {
+		"id": "userPw",
+		"name": "userPw",
+		"type": "password",
+		"max": 40,
+		"constraint": "not null"
+	},
+	"userLevel": {
+		"id": "userLevel",
+		"name": "userLevel",
+		"type": "radio",
+		"constraint": "not null",
+		"default": "255",
+		"options": {
+			"root": {
+				"id": "root",
+				"label": "Root",
+				"value": 0
+			},
+			"admin": {
+				"id": "admin",
+				"label": "Admin",
+				"value": 1
+			},
+			"localAdmin": {
+				"id": "localAdmin",
+				"label": "LocalAdmin",
+				"value": 5
+			},
+			"dealer": {
+				"id": "dealer",
+				"label": "Dealer",
+				"value": 10
+			},
+			"shopOwner": {
+				"id": "shopOwner",
+				"label": "Shop Owner",
+				"value": 50
+			},
+			"request": {
+				"id": "request",
+				"label": "request",
+				"value": 100
+			}
+		}
+	},
+	"email": {
+		"id": "email",
+		"name": "email",
+		"type": "text",
+		"max": 255,
+		"constraint": "not null"
+	},
+	"uDate": {
+		"id": "uDate",
+		"name": "uDate",
+		"type": "datetime",
+		"default": "CURRENT_TIMESTAMP"
+	},
+	"wDate": {
+		"id": "wDate",
+		"name": "wDate",
+		"type": "datetime"
+	}
+}

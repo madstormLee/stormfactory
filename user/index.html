@@ -1,0 +1,50 @@
+<h1>User</h1>
+
+<form class='simpleSearch changeSubmit' method='get' action='?'>
+	<input type='radio' id='levelAll' name='level' value='' <?=(! $params->level)?'checked':''?> />
+	<label for='levelAll'>모두 보기</label>
+	<? foreach( $model->getConfig('level')->data as $row ): ?>
+	<? if ( $row->value <= $config->session->user->getLevel() ) continue; ?>
+	<input type='radio' id='level<?=$row->value?>' name='level' value='<?=$row->value?>' <?=($row->value == $params->get->level)?'checked':''?> />
+	<label for='level<?=$row->value?>'><?=$row->label?></label>
+	<? endforeach; ?>
+</form>
+
+<section id='index'>
+	<? foreach( $index = $model->getIndex() as $row ): ?>
+	<dl>
+		<dt>user Id</dt>
+		<dd><a href='./view?id=<?=$row->id?>'><?=$row->userid?></a></dd>
+		<dt>email</dt>
+		<dd><a href='mailto:<?=$row->email?>'><?=$row->email?></a></dd>
+		<dt>level</dt>
+		<dd><?=$row->levelName?></dd>
+		<dt>groups</dt>
+		<dd>
+		<nav class='group'>
+			<? foreach( $model->group as $groupName ): ?>
+			<a href='~/UserGroup/view?id=<?=$groupName?>'><?=$groupName?></a>
+			<? endforeach; ?>
+		</nav>
+		</dd>
+		<dt>buttons</dt>
+		<dd class='buttons'>
+		<a href='./write?id=<?=$row->id?>'>수정</a>
+		<a href='./delete?id=<?=$row->id?>'>삭제</a>
+		</dd>
+
+	</dl>
+	<? endforeach; ?>
+
+	<? if ( $index->isEmpty() ) : ?>
+	<p class='notice'>No searched list.</p>
+	<? endif; ?>
+
+	<?=$index->getPageNavi()?>
+</section>
+
+<section id='right'>
+	<nav class='component'>
+		<a href='./write'>write</a>
+	</nav>
+</section>

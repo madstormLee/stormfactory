@@ -1,7 +1,7 @@
 {
 	"user": {
 		"label":"user",
-		"component": "mad/user"
+		"component": "user"
 	},
 	"persona": {
 		"label":"Persona",

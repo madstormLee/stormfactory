@@ -1,0 +1,29 @@
+<h1>Login History</h1>
+
+<table class='index'>
+	<thead>
+		<tr>
+			<th>Level Name</th>
+			<th>Level</th>
+			<th>User Id</th>
+			<th>Login Time</th>
+			<th>Logout Time</th>
+		</tr>
+	</thead>
+	<tbody>
+	<? foreach( $index as $row ): ?>
+	<tr>
+		<td><?=$row->levelName?></td>
+		<td><?=$row->level?></td>
+		<td><?=$row->userid?></td>
+		<td><?=$row->login_time?></td>
+		<td><?=$row->logout_time?></td>
+	</tr>
+	<? endforeach; ?>
+	</tbody>
+</table>
+<? if ( $index->isEmpty() ) : ?>
+<p class='notice'>No search list</p>
+<? endif; ?>
+
+<?=$index->getPageNavi() ?>

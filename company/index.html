@@ -1,0 +1,10 @@
+<h1>Company</h1>
+
+<section id='index'>
+	<? foreach( $model->getIndex() as $row ): ?>
+	<a href='./select?id=$row->id?>'><?=$row->name?></a>
+	<? endforeach; ?>
+</section>
+
+<section id='right'>
+</section>

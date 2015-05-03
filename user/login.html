@@ -1,0 +1,19 @@
+<h1>User Login</h1>
+
+<form id="Login" class='medium-9 columns' method='post' action='registSession'>
+	<input type='hidden' name='returnUrl' value='<?=$params->returnUrl?>' />
+
+	<label for='userId'>User ID</label>
+	<input id="userId" name="userId" type="text" tabindex= "1" required />
+	<label for='userPw'>Password</label>
+	<input id="userPw" name="userPw" type="password" tabindex= "2" required />
+
+	<button tabindex="3">로그인</button>
+</form>
+
+<section id='right'>
+	<nav class='buttons breadcrumbs'>
+		<a href='./findIdPw'>ID/PWD 찾기</a>
+		<a href='./signup'>신규가입</a>
+	</nav>
+</section>

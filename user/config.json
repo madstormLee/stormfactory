@@ -1,0 +1,22 @@
+{
+	"view": {
+		"validate": {
+			"id": {
+				"empty": "id is mandatory",
+				"!/[0-9]{6}_[0-9]{6}/": "Wrong id"
+			}
+		}
+	},
+	"save": {
+		"interpret": {
+			"empty": "Save Error",
+			"default": "Saved"
+		}
+	},
+	"delete": {
+		"interpret": {
+			"empty": "Delete Error",
+			"default": "Deleted"
+		}
+	}
+}
