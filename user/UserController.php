@@ -66,9 +66,9 @@ class UserController extends MadController {
 		$this->js->replace( $this->router->project . '/' );
 	}
 	function logoutAction() {
-		unset( MadSession::getInstance()->user );
-		$this->js->replace( $this->session->after );
-		return 'session user logout';
+		unset( $this->session->user );
+		unset( $this->session->company );
+		return true;
 	}
 	function findIdAction() {
 	}

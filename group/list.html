@@ -1,0 +1,11 @@
+<? foreach( $index as $row ): ?>
+<dl>
+	<dt class='<?=isset($row->subs)?'subs':''; ?>'>
+		<a class='list' href='./list/?parentId=<?=$row->id?>'>+</a>
+		<a href='./?parentId=<?=$row->id?>' title='<?=htmlEntities($row->description)?>'><?=$row->label?></a>
+		<a class='write' href='./write/?id=<?=$row->id?>' data-target='#write' title='edit'>E</a>
+		<a class='write' href='./write/?parentId=<?=$row->id?>' data-target='#write' title='add sub'>S</a>
+	</dt>
+	<dd class='subs'></dd>
+</dl>
+<? endforeach; ?>

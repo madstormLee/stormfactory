@@ -1,10 +1,21 @@
+<link rel='stylesheet' type='text/css' href='./style.css' />
 <h1>Company</h1>
 
 <section id='index'>
-	<? foreach( $model->getIndex() as $row ): ?>
-	<a href='./select?id=$row->id?>'><?=$row->name?></a>
+<ul class='company row'>
+	<? foreach( $index as $row ): ?>
+	<li class='medium-3 columns'>
+		<a href='./select?id=<?=$row->id?>'><?=$row->label?></a>
+		<p><?=$row->description?></p>
+	</li>
 	<? endforeach; ?>
+</ul>
 </section>
 
 <section id='right'>
+	<nav class='breadcrumbs'>
+		<a href='./write'>write</a>
+		<a href='./index'>index</a>
+	</nav>
+	<section data-href='./write'></section>
 </section>

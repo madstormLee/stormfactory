@@ -24,14 +24,14 @@
 				</ul>
 
 				<section class="top-bar-section">
+				<? if ( $config->session->user && $config->session->company ): ?>
 					<ul class="menu left">
 						<li> <a href='~/project'>프로젝트 보기</a> </li>
 						<li> <a href='~/project/write'>프로젝트 등록</a> </li>
 						<li> <a href='~/info'>정보 보기</a> </li>
 						<li> <a href='~/board'>커뮤니케이션</a> </li>
-						<? if ( $config->session->user ): ?>
-						<? endif; ?>
 					</ul>
+					<? endif; ?>
 
 					<ul class="personal right">
 						<? if ( $config->session->user ) : ?>

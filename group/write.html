@@ -1,0 +1,17 @@
+<h1>Write</h1>
+
+<form class='write' method='post' action='./save'>
+	<input type='hidden' id='id' name='id' value='<?=$model->id?>' />
+	<input type='number' id='parentId' name='parentId' value='<?=$model->parentId?>' />
+	<input type='hidden' id='orderId' name='orderId' value='<?=$model->orderId + 1?>' />
+
+	<label for='domain'>domain</label>
+	<input type='text' name='domain' id='domain' value='<?=$model->domain?>' required />
+	<label for='label'>label</label>
+	<input type='text' name='label' id='label' value='<?=$model->label?>' required />
+
+	<label for='description'>description</label>
+	<textarea name='description' id='description' required><?=$model->description?></textarea>
+
+	<button>create</button>
+</form>
