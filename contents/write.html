@@ -1,0 +1,48 @@
+<script src='./script.js'></script>
+<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+<a class='image' href='~/image/list?dir=files/server/php/files' data-reveal-id='images' data-reveal-ajax='true'><img src='~/images/pictures.png' /></a>
+
+<nav class='buttons'>
+	<a class='type' title='toggle Type' href='#toggleType'>stack</a>
+	<a class='float' title='toggle Float' href='#toggleFloat'>&lt;</a>
+	<a class='scale' title='toggle Scale' href='#toggleScale'>S</a>
+	<a class='tie' title='toggle Tie' href='#toggleTie'>T</a>
+	<a class='contents' title='edit Contents' href='#revealContents' data-reveal-id='modal'>C</a>
+</nav>
+
+
+<form class='write' method='post' action='./save'>
+	<input type='hidden' id='id' name='id' value='<?=$model->id?>' />
+	<input type='hidden' id='parentId' name='parentId' value='<?=$model->parentId?>' />
+
+	<div class='hide'>
+		<label for='image'>image</label>
+		<input type='text' name='image' id='image' value='<?=$model->image?>' required />
+
+		<fieldset id='type'>
+			<legend for='type'>type</legend>
+			<? foreach( $model->getSetting('type')->options as $row ): ?>
+			<input type='radio' name='type' id='type<?=$row->id?>' value='<?=$row->id?>'  <?=($row->id==$model->type)?"checked='checked'":'';?> />
+			<label for='type<?=$row->id?>'><?=$row->label?></label>
+			<? endforeach; ?>
+		</fieldset>
+
+		<label for='scale'>scale</label>
+		<input type='number' name='scale' id='scale' value='<?=$model->scale?>' required pattern='[1-4]' />
+
+		<label for='tie'>tie</label>
+		<input type='number' name='tie' id='tie' value='<?=$model->tie?>' required pattern='[0-3]' />
+
+		<label for='float'>float</label>
+		<input type='text' name='float' id='float' value='<?=$model->float?>' required pattern='(left|right)' />
+	</div>
+
+	<label for='title'>title</label>
+	<input type='text' name='title' id='title' value='<?=$model->title?>' required />
+
+	<label for='contents'>contents</label>
+	<textarea name='contents' id='contents' required><?=$model->contents?></textarea>
+
+	<button>create</button>
+</form>

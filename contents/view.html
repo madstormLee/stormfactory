@@ -1,0 +1,17 @@
+<h1>view</h1>
+
+<dl class='<?=$model->type?>'>
+	<dt><?=$model->title?></dt>
+	<? if ( $model->type == 'video' ) : ?>
+	<dd>
+		<div class='flex-video'>
+			<?=$model->contents?>
+		</div>
+	</dd>
+	<? else: ?>
+	<dd><?=$model->contents?></dd>
+	<? endif; ?>
+</dl>
+<? if( $config->router->ajax ): ?>
+<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+<? endif; ?>

@@ -1,5 +1,5 @@
 <h1>list</h1>
 
 <? foreach( new MadDir('layout/data', '*.html') as $row ): ?>
-<li><a href='<?=$row->getFile()?>'><?=$row->getBasename()?></a></li>
+<li><a href='./view?file=<?=$row->getFile()?>'><?=$row->getBasename()?></a></li>
 <? endforeach; ?>

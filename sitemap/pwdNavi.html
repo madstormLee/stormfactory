@@ -1,0 +1,10 @@
+<nav class='pwd'>
+	<a class='home' href="~/">Home</a>
+	<? foreach( $pwd as $row ): ?>
+	<? if ( $request == $row->path ): ?>
+	&gt; <span><?=$row->label?></span>
+	<? else: ?>
+	&gt; <a href="<?=$row->href?>"><?=$row->label?></a>
+	<? endif; ?>
+	<? ++$i; endforeach; ?>
+</nav>

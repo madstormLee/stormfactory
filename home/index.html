@@ -1,15 +1,28 @@
 <script type='text/javascript' src="./script.js"></script>
+<link rel='stylesheet' href='./style.css' />
 
 <h1>Home</h1>
 
-<section id='index'>
-	this is it.
-</section>
+<section id='index'></section>
 
 <section id='right'>
 	<nav class='breadcrumbs'>
 		<a href='./'>index</a>
 		<a href='./write'>write</a>
 	</nav>
-	<section id='layout' data-href='~/layout/list'></section>
+
+	<ul class='accordion' data-accordion >
+		<li class='accordion-navigation'>
+			<a href='#layout'>layout</a>
+			<section id='layout' class='content active' data-href='~/layout/list'></section>
+		</li>
+		<li class='accordion-navigation'>
+			<a href='#sitemap'>sitemap</a>
+			<section id='sitemap' class='content' data-href='~/sitemap/list'></section>
+		</li>
+		<li class='accordion-navigation'>
+			<a href='#contents'>contents</a>
+			<section id='contents' class='content' data-href='~/contents/list'></section>
+		</li>
+	</ul>
 </section>

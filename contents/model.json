@@ -1,0 +1,41 @@
+{
+	"id": {
+		"id": "id",
+		"name": "id",
+		"label": "id",
+		"type": "integer",
+		"extra": "auto_increment",
+		"key": "primary"
+	},
+	"domain": {
+		"id": "domain",
+		"name": "domain",
+		"label": "domain",
+		"type": "text",
+		"default": "contents"
+	},
+	"title": {
+		"id": "title",
+		"name": "title",
+		"label": "Title",
+		"type": "text"
+	},
+	"contents": {
+		"id": "contents",
+		"name": "contents",
+		"label": "Contents",
+		"type": "textarea"
+	},
+	"wDate": {
+		"id": "wDate",
+		"name": "wDate",
+		"label": "Write Date",
+		"type": "datetime"
+	},
+	"uDate": {
+		"id": "uDate",
+		"name": "uDate",
+		"label": "Update Date",
+		"type": "datetime"
+	}
+}

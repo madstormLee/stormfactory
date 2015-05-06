@@ -1,0 +1,226 @@
+section.tile {
+	list-style: none;
+}
+section.tile div {
+	position: relative;
+	height: 190px;
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+	float: left;
+}
+section.tile div.scale-2 {
+	height: 380px;
+}
+
+section.tile div a {
+}
+section.tile div a img {
+	border: 1px solid #fff;
+	width: 100%;
+	height: 100%;
+}
+section.tile div a dl.info {
+	position: absolute;
+	top: 80%;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #fff;
+	border-top: 0;
+	font-size: 1rem;
+	font-weight: normal;
+	background: #000;
+	color: #fff;
+	opacity: .7;
+	overflow: hidden;
+}
+section.tile a:hover dl.info {
+	top: 1px;
+}
+section.tile dl.info dt {
+	text-align: left;
+	margin: 5px 10px;
+}
+section.tile dl.info dd {
+text-align: left;
+padding: 5px 10px;
+}
+section.tile dl.info dd {
+}
+section.tile dl.info p {
+	font-size: .7rem;
+}
+section.tile div nav.buttons {
+	position: absolute;
+	right: 1px;
+	top: 1px;
+	z-index: 1000;
+	font-size: .8rem;
+	background: #000;
+	padding: 2px 5px;
+	display: inline-block;
+}
+section.tile div a {
+	color: #fff;
+}
+section.tile div a.tied {
+	color: #f00;
+}
+section.tile div a.delete {
+}
+
+section.tile a.up {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	display: block;
+	margin-left: -2rem;
+	width: 70px;
+	height: 48px;
+	margin-left: -35px;
+	z-index: 2000;
+	background: #fff url(../images/up.png) no-repeat 50% 50%;
+	text-indent: -999rem;
+	overflow: hidden;
+	opacity: .3;
+}
+section.tile a.up.admin {
+	top: -48px;
+}
+section.tile a:hover.up {
+	background-color: #fff;
+	opacity: .7;
+}
+section.tile img.stack ,
+section.tile img.video {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 32px;
+	height: 32px;
+}
+
+
+#modal h1 {
+	display: none;
+}
+
+
+/* images */
+#images h1 {
+	display: none;
+}
+#images {
+}
+#images ul {
+	list-style: none;
+	max-height: 700px;
+	overflow: auto;
+}
+#images ul li {
+	display: inline-block;
+	margin: 1px;
+}
+#images ul li img {
+	cursor: pointer;
+}
+#images ul li a.popup {
+	display: none;
+}
+
+/****************** view.html ******************/
+dl.video {
+}
+dl.video dd {
+	text-align: center;
+}
+dl.article {
+	max-height: 35rem;
+	padding: 3rem;
+	margin: 1rem;
+	background: #f0f0f0;
+	overflow: auto;
+}
+dl.article dt {
+	font-size: 3rem;
+	color: #333333;
+}
+dl.article dd {
+}
+dl.article dd * {
+	font-size: 1.4rem;
+	color: #999999;
+}
+
+#write label ,
+#write button {
+	 text-transform: capitalize;
+}
+
+
+/********************* new write *********************/
+#write form.write {
+	display: none;
+}
+#write img {
+	width: 100%;
+	height: 100%;
+}
+
+/********************* section.tree *********************/
+section.tree {
+	padding: 1rem;
+	margin-top: 1rem;
+	border: .5rem solid #999;
+}
+section.tree dl dd.subs {
+	margin-left: 1rem;
+}
+
+@media only screen and (max-width: 40.063em) {
+	section.tile div.tie.scale-2 {
+		height: 137px;
+	}
+
+	section.tile div {
+		height: 137px;
+	}
+	section.tile div.scale-2 {
+		height: 274px;
+	}
+	section.tile {
+		min-width: auto;
+	}
+	dl.article {
+		max-height: 15rem;
+		padding: 1rem;
+		margin: .5rem;
+		background: #f0f0f0;
+		overflow: auto;
+	}
+	dl.article dt {
+		font-size: 1rem;
+		color: #333333;
+	}
+	dl.article dd {
+	}
+	dl.article dd * {
+		font-size: .8rem;
+		color: #999999;
+	}
+	section.tile dl.info dt {
+		margin: 2px 0;
+	}
+
+	@media only screen and (orientation:landscape) {
+		section.tile div {
+			height: 227px;
+		}
+		section.tile div.scale-2 {
+			height: 454px;
+		}
+		section.tile dl.info dt {
+			margin: 10px 0;
+		}
+	}
+}

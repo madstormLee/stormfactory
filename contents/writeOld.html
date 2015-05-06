@@ -1,0 +1,58 @@
+<link rel='stylesheet' href='./style.css' media='all' />
+<link rel='stylesheet' href='~/mad/vendors/datetimepicker/jquery.datetimepicker.css' media='all' />
+<script src='~/mad/vendors/ckeditor/ckeditor.js'></script>
+<script src='~/mad/vendors/datetimepicker/jquery.datetimepicker.js'></script>
+<script src='./script.js'></script>
+
+<h1>프로젝트 등록하기</h1>
+
+<form id='write' class='left medium-9 columns' method='post' action='./save'>
+	<input type='hidden' id='id' name='id' value='<?=$model->id?>' />
+	<input type='hidden' id='parentId' name='parentId' value='<?=$model->parentId?>' />
+
+	<div class='row'>
+		<fieldset id='imagePreview' class='medium-6 columns'>
+			<? if( is_file( $model->image ) ): ?>
+			<img src='~/<?=$model->image?>' width='195px' height='140px' />
+			<? endif; ?>
+		</fieldset>
+		<div class='medium-6 columns'>
+			<label for='image'>image</label>
+			<input type='text' name='image' id='image' value='<?=$model->image?>' required />
+		</div>
+	</div>
+
+	<fieldset id='type'>
+		<legend for='type'>type</legend>
+		<? foreach( $model->getSetting('type')->options as $row ): ?>
+		<input type='radio' name='type' id='type<?=$row->id?>' value='<?=$row->id?>'  <?=($row->id==$model->type)?"checked='checked'":'';?> />
+		<label for='type<?=$row->id?>'><?=$row->label?></label>
+		<? endforeach; ?>
+	</fieldset>
+
+	<label for='scale'>scale</label>
+	<input type='number' name='scale' id='scale' value='<?=$model->scale?>' required pattern='[1-4]' />
+
+	<label for='tie'>tie</label>
+	<input type='number' name='tie' id='tie' value='<?=$model->tie?>' required pattern='[0-3]' />
+
+	<label for='float'>float</label>
+	<input type='text' name='float' id='float' value='<?=$model->float?>' required pattern='(left|right)' />
+
+	<label for='title'>title</label>
+	<input type='text' name='title' id='title' value='<?=$model->title?>' required />
+
+	<label for='contents'>contents</label>
+	<textarea name='contents' id='contents' required><?=$model->contents?></textarea>
+
+	<label for='wDate'>write date</label>
+	<input type='datetime' name='wDate' id='wDate' value='<?=$model->wDate?>' />
+
+	<button>create</button>
+
+</form>
+
+<section class='left medium-3 columns'>
+	<section id='persona' class='column' data-href='~/persona'></section>
+	<section id='images' class='column' data-href='~/image/list?dir=images'></section>
+</section>

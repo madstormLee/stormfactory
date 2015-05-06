@@ -1,0 +1,197 @@
+#sitemapTree dl dt {
+margin-top: 2px;
+padding: 2px 7px;
+border: 1px solid #ccc;
+clear: left;
+}
+#sitemapTree dl dt .label {
+display: inline-block;
+padding: 2px;
+background: #eea;
+}
+#sitemapTree dl dt .buttons {
+display: inline;
+}
+#sitemapTree dl dt .buttons li {
+display: inline;
+}
+#sitemapTree dl dt .buttons li a {
+display: inline-block;
+border: 1px solid #ccc;
+padding: 1px;
+background: #eee;
+}
+/********************* writeSub *****************/
+#write {
+width: 500px;
+border: 5px solid #000;
+background: #fff;
+z-index: 30;
+}
+#MVCManager {
+position: absolute;
+right: 10px;
+top: 10px;
+border: 2px solid #000;
+background: #fff;
+z-index: 50;
+}
+#MVCManager li a {
+display: block;
+padding: 3px 20px;
+background: #eee;
+}
+#MVCManager li a.current {
+background: #fcc;
+}
+#MVCManager li a:hover {
+background: #ccf;
+}
+/********************* view *********************/
+#view {
+position: absolute;
+top: 30px;
+right: 0px;
+width: 500px;
+border: 3px solid #000;
+background: #fff;
+overflow: auto;
+z-index: 100;
+}
+#content {
+	border-collapse: collapse;
+	border: 1px solid #000;
+}
+#content td {
+	border: 1px solid #000;
+}
+#content td.header {
+background: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************** index.html ****************************/
+#main {
+margin-right: 320px;
+margin-left: 10px;
+}
+#right {
+display: block;
+width: 300px;
+}
+
+#SitemapIndex {
+font-size: 12px;
+}
+#SitemapIndex .current {
+background: #fcc !important;
+border: 2px solid #faa !important;
+}
+#SitemapIndex {
+}
+#SitemapIndex dl {
+margin-left: 10px;
+}
+#SitemapIndex dt {
+padding: 1px 10px;
+background: #eee;
+border: 1px solid #000;
+margin-top: 2px;
+cursor: pointer;
+}
+#SitemapIndex dd {
+padding: 1px 10px;
+}
+#SitemapIndex dt.hasValue {
+display: inline-block;
+}
+#SitemapIndex dd.value {
+display: inline-block;
+margin-right: 10px;
+margin-top: 1px;
+background: #ccf;
+}
+#SitemapIndex dt.hasDic {
+display: block;
+}
+#SitemapIndex dd.dic {
+display: block;
+}
+#SitemapIndex input {
+font-size: 12px;
+border: 0;
+width: 90%;
+}
+/******************************* #SitemapWrite *******************************/
+#SitemapWrite {
+position: relative;
+}
+/************************ section.treeContainer ************************/
+section.treeContainer {
+}
+section.treeContainer dl {
+}
+section.treeContainer dl dt a {
+	display: block;
+	margin: 2px;
+	margin-left: 10px;
+	border: 1px solid #000000;
+}
+section.treeContainer dl dt a:hover {
+	background: #cccccc;
+}
+
+
+
+article.sitemap {padding-bottom: 30px;}
+article.sitemap>div h2 {
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 0.2rem 0;
+	background: linear-gradient(top, #68bc19 0%, #67a429 50%);
+	background: -moz-linear-gradient(top, #68bc19 0%, #67a429 50%);
+	box-shadow: 0px 2px 5px #999;
+	color: #fff;
+}
+article.sitemap ul  { color: #666; margin: 0; padding-top: 10px; padding-bottom: 5px; }
+article.sitemap ul ul {  padding: 0; border-bottom: 1px solid #ccc; }
+article.sitemap ul ul ul { border: 0; }
+
+article.sitemap ul li { padding: 0.05rem 0.2rem; }
+article.sitemap ul ul li {padding: 2px 0 2px 4px;}
+article.sitemap ul ul ul li {padding: 1px 0 1px 4px;}
+
+article.sitemap ul li a {
+ font-size: 0.9rem;
+ letter-spacing: -1px;
+}
+article.sitemap ul ul li a {
+ font-size: 0.8rem;
+}
+article.sitemap ul ul ul li a {
+ font-size: 0.7rem;
+}
+article.sitemap ul ul li a:before {
+	content: '· ';
+}
+article.sitemap ul ul ul li a:before {
+	content: '- ';
+}
+#ContentsView {
+	border: 10px solid #000;
+}

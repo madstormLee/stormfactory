@@ -1,0 +1,68 @@
+<script src='./script.js'></script>
+
+
+<form id='SitemapWrite' method='post' class='medium-9 columns' action='./save'>
+	<?=$config->sitemap->getPwdNavi(); ?>
+	<h1><?=$config->sitemap->getTitle(); ?></h1>
+
+	<dl class='row'>
+		<dt class='medium-2 columns'>
+			<label for='path' class='right inline'>Path</label>
+		</dt>
+		<dd class='medium-10 columns'>
+			<input type='text' name='path' value='<?=$params->path?>' readonly />
+		</dd>
+	</dl>
+
+	<div id='keys'>
+		<? foreach( $formData as $key => $value ): ?>
+		<? if ( $key == 'subs' || $key == 'current' ) continue; ?>
+		<dl class='row'>
+			<dt class='medium-2 columns'>
+			<label for='<?=$key?>' class='inline right'><?=$key?></label>
+			</dt>
+			<dd class='medium-9 columns'>
+			<input type='text' name='<?=$key?>' value='<?=$value?>' />
+			</dd>
+			<dt class='medium-1 columns text-center'>
+			<a href='#remove' class='tiny round button'>X</a>
+			</dt>
+		</dl>
+		<? endforeach; ?>
+	</div>
+	<button class='small round right'>Save</button>
+</form>
+
+<form id='AddKey' class='medium-9 columns' action='#keys'>
+	<input type='hidden' id='template' value="
+		<dl class='row'>
+			<dt class='medium-2 columns'>
+			<label for='$key' class='inline right'>$key</label>
+			</dt>
+			<dd class='medium-9 columns'>
+			<input type='text' name='$key' value='$value' />
+			</dd>
+			<dt class='medium-1 columns text-center'>
+			<a href='#remove' class='tiny round button'>X</a>
+			</dt>
+		</dl>
+			" />
+	<dl class='row collapse'>
+		<dt class='medium-2 columns'>
+			<input type='text' id='key' value='' placeholder='Key' />
+		</dd>
+		<dd class='medium-8 columns'>
+			<input type='text' id='value' value='' placeholder='Value' />
+		</dd>
+		<dd class='medium-2 columns text-center'>
+			<button class='tiny round'>Add</button>
+		</dd>
+	</dl>
+</form>
+
+<section id='ContentsView' class='medium-9 columns'>
+	<h1>Contents View</h1>
+
+	<article data-load='<?=$formData->href?>' style='border: 1rem solid #000; padding: 1rem;'>
+	</article>
+</section>

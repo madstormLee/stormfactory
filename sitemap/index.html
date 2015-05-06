@@ -1,0 +1,36 @@
+<link rel='stylesheet' type='text/css' href='./style.css' />
+
+<h1>Sitemap</h1>
+
+<section id='index' data-href='./list'>
+<dl>
+	<dt>/</dt>
+	<dd>
+	<? $treeIterator = function( $tree ) use ( &$treeIterator ) { ?>
+	<? foreach( $tree as $row ): ?>
+	<dl>
+		<dt>
+			<li class='<?=isset($row->subs)?'subs':'noSubs'; ?>'>
+			<?=$row->label?>
+			<a class='createSub' href='./write?parentid=<?=$row->id?>' title='create sub'>create sub</a>
+			<a class='delete' href='./delete?id=<?=$row->id?>' data-confirm='delete tree'>delete</a>
+		</dt>
+		<? if ( ! empty( $row->subs ) ): ?>
+		<dd class='subs'><? $treeIterator( $row->subs ); ?></dd>
+		<? endif; ?>
+	</dl>
+	<? endforeach; ?>
+	<? }; $treeIterator( $index ); ?>
+	</dd>
+</dl>
+</section>
+
+<section id='right' class='right medium-3 columns'>
+	<nav class='component'>
+		<a href='./index' data-target='#index'>index</a>
+		<a href='./write' data-target='#index'>write</a>
+	</nav>
+	<section id='components' class='tools' data-href='~/component/tree'>
+	<section id='write' data-href='./add'></section>
+</section>
+
