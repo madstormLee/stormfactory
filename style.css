@@ -22,3 +22,18 @@
 	font-size: .8rem;
 }
 
+footer > * {
+	margin: 0;
+	font-size: 0.8rem;
+}
+footer .breadcrumbs {
+	background: transparent;
+	border: 0;
+}
+footer span {
+	padding: 3px;
+}
+footer .breadcrumbs li a {
+	color: #fff;
+	padding: 0;
+}

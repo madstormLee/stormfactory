@@ -28,25 +28,34 @@
 				</ul>
 
 				<section class="top-bar-section">
-				<? if ( $config->session->user && $config->session->company ): ?>
+					<? if ( $config->session->user && $config->session->company ): ?>
 					<ul class="menu left">
-						<li> <a href='~/home'>home</a> </li>
-						<li> <a href='~/shop'>shop</a> </li>
-						<li> <a href='~/erp'>erp</a> </li>
-						<li> <a href='~/project'>project</a> </li>
-						<li> <a href='~/info'>정보 보기</a> </li>
-						<li> <a href='~/board'>커뮤니케이션</a> </li>
+						<li><a href='~/message'>message</a></li>
+						<li><a href='~/home'>home</a></li>
+						<li><a href='~/shop'>shop</a></li>
+						<li class='has-dropdown'>
+							<a href='~/erp'>erp</a>
+							<ul class='dropdown'>
+								<li><a href='~/erp/sales'>sales</a></li>
+								<li><a href='~/project'>project</a></li>
+								<li><a href='~/board'>커뮤니케이션</a></li>
+							</ul>
+						</li>
+						<li><a href='~/info'>정보 보기</a></li>
 					</ul>
 					<? endif; ?>
 
 					<ul class="personal right">
 						<? if ( $config->session->user ) : ?>
-						<li> <a href='~/install'>install</a> </li>
+						<? if ( $config->session->user->isAdmin() ): ?>
+						<li><a href='~/install'>install</a></li>
+						<? endif; ?>
+						<li><a href='~/messenger'>messenger</a></li>
 						<li><a href='~/user/logout'>logout</a></li>
-						<li><a href='~/mypage'>my page</a></li>
+						<li class='active'><a href='~/user/write'><?=$config->session->user->userId?></a></li>
 						<? else: ?>
 						<li class="signUp"><a href='~/user/signup'>signup</a></li>
-						<li class="active"><a href='~/user/login'>login</a></li>
+						<li><a href='~/user/login'>login</a></li>
 						<? endif; ?>
 					</ul>
 				</section>
@@ -57,11 +66,11 @@
 
 		<footer class='columns'>
 			<? if( isset($config->session->project) ) : ?>
-			<span class='notice'>project: <?=$config->session->project?></span>
+			<span class='notice right medium-6 columns'>project: <?=$config->session->project?></span>
 			<? else: ?>
-			<span class='copyrights'><?=$config->info->author?> <?=$config->info->year?>::<?=$config->info->project?></span>
+			<span class='copyrights right medium-6 columns'><?=$config->info->author?> <?=$config->info->year?>::<?=$config->info->project?></span>
 			<? endif; ?>
-			<ul class='breadcrumbs'>
+			<ul class='breadcrumbs left medium-6 columns'>
 				<li> <a href='/wp'>blog</a> </li>
 				<li> <a href='/ziwoo'>ziwoo</a> </li>
 			</ul>
