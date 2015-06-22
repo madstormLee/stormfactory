@@ -1,11 +1,13 @@
+<h1>List</h1>
+
 <? foreach( $index as $row ): ?>
 <dl>
 	<dt class='<?=isset($row->subs)?'subs':''; ?>'>
 		<a class='list' href='./list/?parentId=<?=$row->id?>'>+</a>
 		<a href='./?parentId=<?=$row->id?>' title='<?=htmlEntities($row->description)?>'><?=$row->label?></a>
-		<a href='./write/?id=<?=$row->id?>' data-target='#write' title='edit'>E</a>
-		<a href='./write/?parentId=<?=$row->id?>' data-target='#write' title='add sub'>S</a>
-		<a href='~/contents/write?domain=stormfactory/sitemap/<?=$row->id?>' title='edit contents'>C</a>
+		<a href='./write?id=<?=$row->id?>' data-target='#write' title='edit'>E</a>
+		<a href='./write?parentId=<?=$row->id?>' data-target='#write' title='add sub'>S</a>
+		<a href='~/contents/write?domain=sitemap/<?=$row->id?>' title='edit contents'>C</a>
 	</dt>
 	<dd class='subs'></dd>
 </dl>

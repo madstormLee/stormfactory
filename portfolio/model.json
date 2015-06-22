@@ -1,0 +1,53 @@
+{
+	"id": {
+		"id": "id",
+		"name": "id",
+		"label": "id",
+		"type": "number",
+		"extra": "auto_increment",
+		"key": "primary"
+	},
+	"domain": {
+		"id": "domain",
+		"name": "domain",
+		"label": "domain",
+		"type": "text",
+		"default": "stormfactory/madstorm"
+	},
+	"src": {
+		"id": "src",
+		"name": "src",
+		"label": "src",
+		"type": "text"
+	},
+	"href": {
+		"id": "href",
+		"name": "href",
+		"label": "href",
+		"type": "text"
+	},
+	"title": {
+		"id": "title",
+		"name": "title",
+		"label": "Title",
+		"type": "text"
+	},
+	"contents": {
+		"id": "contents",
+		"name": "contents",
+		"label": "Contents",
+		"type": "textarea"
+	},
+	"wDate": {
+		"id": "wDate",
+		"name": "wDate",
+		"label": "Write Date",
+		"type": "datetime"
+	},
+	"uDate": {
+		"id": "uDate",
+		"name": "uDate",
+		"label": "Update Date",
+		"type": "datetime"
+	}
+}

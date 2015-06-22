@@ -1,8 +1,9 @@
 <script type='text/javascript' src="./script.js"></script>
+<link rel='stylesheet' href='./style.css' />
 
-<h1>Home</h1>
+<h1>Shop</h1>
 
-<section id='index' data-save-href='./save' data-layout-href='<?=$model->layoutUrl?>'></section>
+<section id='index'></section>
 
 <section id='right'>
 	<nav class='breadcrumbs'>
@@ -10,22 +11,15 @@
 		<a href='./write'>write</a>
 	</nav>
 
-	<ul class='accordion' data-accordion >
-		<li class='accordion-navigation'>
-			<a href='#write'>write</a>
-			<section id='write' class='content active' data-href='./write'></section>
-		</li>
-
+	<ul class='accordion' data-accordion>
 		<li class='accordion-navigation'>
 			<a href='#layout'>layout</a>
-			<section id='layout' class='content' data-href='~/layout/list'></section>
+			<section id='layout' class='content active' data-href='~/layout/list'></section>
 		</li>
-
 		<li class='accordion-navigation'>
 			<a href='#sitemap'>sitemap</a>
 			<section id='sitemap' class='content' data-href='~/sitemap/list'></section>
 		</li>
-
 		<li class='accordion-navigation'>
 			<a href='#contents'>contents</a>
 			<section id='contents' class='content' data-href='~/contents/list'></section>

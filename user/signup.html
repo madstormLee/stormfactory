@@ -1,0 +1,27 @@
+<h1>signup</h1>
+
+<form id="UserWrite" class='simple' method='post' action='save' data-abide>
+	<div class='id-field'>
+		<label for='id'>id</label>
+		<input type="text" id="userId" name="userId" value="<?=$model->userId?>" data-dup-check-href='./isUserid' pattern=".{8,40}" required='required' />
+		<small class='error'>아이디는 8자 이상 40자 이하 입니다. </small>
+	</div>
+
+	<div class='userPw-field'>
+		<label for='userPw'>password</label>
+		<input type="password" id="userPw" name="userPw" value="" pattern="[a-zA-Z0-9_]{5,30}" required />
+	</div>
+	<div class='userPwConfirm-field'>
+		<label for='userPwConfirm'>passwordConfirm</label>
+		<input type="password" id="userPwConfirm" value="" pattern="[a-zA-Z0-9_]{5,30}" required  data-equalto="userPw"/>
+		<small class='error'>패스워드가 정확하지 않습니다. </small>
+	</div>
+
+	<label for='email'>email</label>
+	<input id='email' name='email' type='email' value='<?=$model->email?>' required />
+
+	<nav class="buttons">
+		<button class='submit' type='submit'>등록</button>
+		<button class='cancel' type='reset'>취소</button>
+	</nav>
+</form>

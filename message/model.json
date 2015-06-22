@@ -1,0 +1,49 @@
+{
+	"id": {
+		"id": "id",
+		"name": "id",
+		"label": "id",
+		"type": "integer",
+		"extra": "auto_increment",
+		"key": "primary"
+	},
+	"sender": {
+		"id": "sender",
+		"name": "sender",
+		"label": "sender",
+		"type": "text",
+		"default": ""
+	},
+	"receiver": {
+		"id": "receiver",
+		"name": "receiver",
+		"label": "receiver",
+		"type": "text",
+		"default": ""
+	},
+	"domain": {
+		"id": "domain",
+		"name": "domain",
+		"label": "domain",
+		"type": "text",
+		"default": "contents"
+	},
+	"contents": {
+		"id": "contents",
+		"name": "contents",
+		"label": "Contents",
+		"type": "textarea"
+	},
+	"wDate": {
+		"id": "wDate",
+		"name": "wDate",
+		"label": "Write Date",
+		"type": "datetime"
+	},
+	"uDate": {
+		"id": "uDate",
+		"name": "uDate",
+		"label": "Update Date",
+		"type": "datetime"
+	}
+}

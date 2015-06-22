@@ -1,2 +1,2 @@
 <?
-include 'mad/index.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/mad/index.php';

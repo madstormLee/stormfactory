@@ -1,0 +1,35 @@
+#dropzone {
+padding-top: 15%;
+padding-bottom: 15%;
+}
+#portfolioWrite {
+}
+section.index ul.orbit {
+}
+section.index ul.orbit li {
+height: 90vh;
+}
+section.index ul.normal {
+	list-style: none;
+}
+section.index ul.normal li {
+	padding-bottom: 3rem;
+	padding-top: 3rem;
+	border-bottom: 3px solid #999;
+}
+section.index ul.orbit li p {
+	margin-bottom: 0;
+}
+section.index ul.orbit img {
+height: 100%;
+margin: 0 auto;
+}
+section.index ul.orbit li a {
+	color: #fff;
+}
+section.index ul.orbit li a:hover {
+	color: #ffc;
+}
+header, footer {
+	display: none;
+}

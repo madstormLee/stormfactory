@@ -8,16 +8,7 @@ class InstallController extends MadController {
 		if ( ! isset( $this->session->user ) ) throw new Exception('need login');
 
 		$this->dropAction();
-
-		$get = $this->params;
-		$model = $this->model;
-
-		$model->fetch( $get->file );
-		return $model->install();
-	}
-	function installAction() {
-		$scheme = new MadScheme( $this->model );
-		return $this->db->exec( $scheme );
+		return $this->model->fetch( $this->params->file )->install();
 	}
 	function uninstallAction() {
 		$get = $this->params;

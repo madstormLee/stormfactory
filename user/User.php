@@ -5,9 +5,8 @@ class User extends MadModel {
 	protected $level = 1000;
 
 	function __construct( $id='' ) {
-		$this->setSetting( __dir__ . '/model.json');
 		$this->initLevels();
-		$this->fetch( $id );
+		parent::__construct( $id );
 	}
 	public static function getSession() {
 		if ( isset( $_SESSION['user'] ) ) {
@@ -34,26 +33,12 @@ class User extends MadModel {
 		return $db->exec( $query );
 	}
 	function save() {
-		$this->userPw = sha1($this->userPw);
 		if ( empty($this->id) ) {
 			$this->wDate = date('Y-m-d H:i:s');
-			$this->userLevel = 200;
+			$this->userPw = sha1($this->userPw);
 		}
 		$this->uDate = date('Y-m-d H:i:s');
 		return parent::save();
-	}
-	function insert() {
-		$this->wDate = date('Y-m-d H:i:s');
-		$this->uDate = date('Y-m-d H:i:s');
-
-		$query = new MadQuery( get_class($this) );
-		$query->insert( array_filter($this->data) );
-
-		$db = $this->getDb();
-
-		$stmt = $db->prepare( $query );
-		$result = $stmt->execute( $query->data() );
-		return $db->lastInsertId();
 	}
 	function getNameLevel( $name = '' ) {
 		return $this->getLevels()->$name;
@@ -93,20 +78,20 @@ class User extends MadModel {
 	function hasAuth( $level = 0 ) {
 		return $this->getLevel() <= $level ;
 	}
-	function getDb() {
-		return MadDb::create();
-	}
 	function fetch( $id='' ) {
 		if ( empty( $id ) ) {
 			return $this;
 		}
 		$query = "select * from User where id=:id";
 		$stmt = $this->getDb()->prepare( $query );
-		$stmt->execute( array( ':id' => $id ) )->fetch(PDO::FETCH_ASSOC);
+		if ( ! $stmt->execute( array( ':id' => $id ) ) ) {
+			throw new Exception( "No id: $id" );
+		}
+		$this->data = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $this;
 	}
 	function fetchUserId( $userId ) {
-		$query = "select * from User where userId=:userId";
+		$query = "select * from $this->name where userId=:userId";
 		$stmt = $this->getDb()->prepare( $query );
 		if( ! $stmt->execute( array( 'userId' => $userId ) ) ) {
 			throw new Exception('No user : ' . $userId);
@@ -160,13 +145,5 @@ class User extends MadModel {
 			return false;
 		}
 		return $this->level === $level;
-	}
-	/******************** not using ********************/
-	function checkIp() {
-		$ipCheck = new IpCheck;
-		if (! $ipCheck->isAdmin("")) {
-			throw new Exception( '허가되지 않은 접근 아이피입니다.' );
-		}
-		return true;
 	}
 }

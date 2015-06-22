@@ -1,0 +1,15 @@
+<h1>model write</h1>
+
+<form id='model' method='post' action='./save'>
+	<input type='hidden' id='id' name='id' value="<?=$model->id?>" />
+	<input type='hidden' id='domain' name='domain' value="<?=$model->domain?>" />
+	<label for='src'>src</label>
+	<input type='text' id='src' name='src' value="<?=$model->src?>" />
+	<label for='href'>href</label>
+	<input type='text' id='href' name='href' value="<?=$model->href?>" />
+	<label for='title'>title</label>
+	<input type='text' id='title' name='title' value="<?=$model->title?>" />
+	<label for='contents'>contents</label>
+	<textarea id='contents' name='contents'><?=$model->contents?></textarea>
+	<button>확인</button>
+</form>

@@ -27,11 +27,13 @@ class SitemapController extends MadController {
 		$this->view->index = $index;
 	}
 	function addAction() {
+		$model = $this->model;
 		if ( $this->session->company ) {
 			$domain = $this->session->company->label . '/sitemap';
 		} else {
 			$domain = 'sitemap';
 		}
+		$model->domain = $domain;
 	}
 	function tempAction() {
 		$model = new Group;

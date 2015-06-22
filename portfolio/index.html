@@ -1,0 +1,35 @@
+<link rel='stylesheet' href='./style.css' />
+
+<h1>
+	<span>Portfolio</span>
+	<nav class='breadcrumbs right'>
+		<a href='?mode=orbit'>orbit</a>
+		<a href='?mode=thumbs'>thumbs</a>
+		<a href='?mode=normal'>normal</a>
+	</nav>
+</h1>
+
+<section class='index'>
+<? if ( $params->mode == 'orbit' ): ?>
+<ul class="orbit" data-orbit data-options="animation:slide;
+                  pause_on_hover:false;
+                  timer_speed:6000;
+                  animation_speed:1000;
+                  navigation_arrows:true;
+                  bullets:true;">
+<? elseif( $params->mode == 'thumbs' ): ?>
+<ul class="small-block-grid-4">
+<? else: ?>
+<ul class="normal">
+<? endif; ?>
+	<? foreach( $model->getIndex() as $row ): ?>
+  <li>
+		<a href='<?=$row->href?>' target='blank'><img src="<?=$row->src?>" alt="<?=$row->title?>" /></a>
+    <div class="orbit-caption">
+			<a href='<?=$row->href?>' target='blank'><?=$row->title?></a>
+			<p><?=$row->contents?></p>
+    </div>
+  </li>
+	<? endforeach; ?>
+</ul>
+</section>

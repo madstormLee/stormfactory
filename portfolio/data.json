@@ -1,0 +1,85 @@
+{
+	"lasvegas":{
+		"href":"http://www.lasvegas.com", 
+		"src":"./images/lasvegas.png",
+		"title":"라스베가스",
+		"contents":"각각 따로 되어있는 텍스트 정보 페이지를 DB화."
+	},
+
+	"telkomsel":{
+		"href":"http://telkomsel.com/", 
+		"src":"./images/telkomsel.png",
+		"title":"텔콤셀(인도네시아)",
+		"contents":"실재 작업 페이지는 telkomsel에서 운영하던 mypulau 라는 이름의 커뮤니티."
+	},
+
+	"familynet":{
+		"href":"http://www.familynet.or.kr/publicity/maincenter/list.do", 
+		"src":"./images/familynet.png",
+		"title":"한국건강가정진흥원",
+		"contents":"CRM을 위주로 하는 뉴스 페이지(news.familynet.or.kr)."
+	},
+
+	"cyloghomes":{
+		"href":"http://media.cyloghomes.net/media/2008/10/9/np_57_28.html", 
+		"src":"./images/newspaper.png",
+		"title":"뉴스 페이지",
+		"contents":"일반적인 뉴스 페이지의 예시."
+	},
+
+	"motie":{
+		"href":"http://www.motie.go.kr/motie/ne/motienewse/bbs/bbsList.do?bbs_cd_n=75", 
+		"src":"./images/motie.png",
+		"title":"산업통산자원부",
+		"contents":"당시 산자부에서 지식경제부(mke.go.kr)로 이동. 현재 산업통산자원부."
+	},
+
+	"mpss":{
+		"href":"http://www.mpss.go.kr/main/main.html", 
+		"src":"./images/kcg.png",
+		"title":"국민안전처(전 해양경찰청)",
+		"contents":"당시 해양경찰청 홍보 시스템."
+	},
+
+	"sen":{
+		"href":"http://enews.sen.go.kr/index.do", 
+		"src":"./images/enews.sen.png",
+		"title":"서울시교육청 뉴스",
+		"contents":""
+	},
+
+	"hong21":{
+		"href":"http://www.hong21.com/", 
+		"src":"./images/hong.png",
+		"title":"slide 3",
+		"contents":""
+	},
+
+	"inpainterglobal":{
+		"href":"http://www.inpainterglobal.com/", 
+		"src":"./images/inpainterGlobal.png",
+		"title":"인페인터 글로벌",
+		"contents":""
+	},
+
+	"jeonbuk":{
+		"href":"http://www.jeonbuk.go.kr/index.jeonbuk", 
+		"src":"./images/jeonbuk.png",
+		"title":"전북도청",
+		"contents":""
+	},
+
+	"exrkorea":{
+		"href":"http://shop.exrkorea.com/display.do?cmd=mallMain", 
+		"src":"./images/exr.png",
+		"title":"EXR korea shop",
+		"contents":""
+	},
+
+	"charlottetheater":{
+		"href":"http://www.charlottetheater.co.kr/",
+		"src":"./images/charlottetheater.png",
+		"title":"Charlotte Theater",
+		"contents":""
+	}
+}

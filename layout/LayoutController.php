@@ -1,35 +1,30 @@
 <?
 class LayoutController extends MadController {
 	function indexAction() {
-	}
-	function listAction() {
-	}
-	function viewAction() {
-		$this->view->setFile($this->params->file);
-		$this->view->main = '<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />';
-
-		// @todo refactory: this is from sitemap.
-		$get = $this->params;
-		if ( ! isset($get->parentId) ) {
-			$get->parentId = 0;
+		if ( ! $this->router->ajax ) {
+			$view = $this->layout;
+		} else {
+			$view = $this->view;
 		}
+		$view->setFile($this->params->file);
+		$view->main = '<textarea id="contents" name="contents" rows="30" ></textarea>';
+
 		if ( $this->session->company ) {
 			$domain = $this->session->company->label . '/sitemap';
 		} else {
 			$domain = 'sitemap';
 		}
-		$this->model->domain = $domain;
-		$this->model->parentId = $get->parentId;
+		$model = $this->model;
 
-		$query = new MadQuery( 'Group' );
-		$query->where( "domain='$domain'" )
-			->limit();
-		$this->db->query( $query );
-		$index = $this->db->fetchAll( $this->model );
-		$index = new MadTree( $index );
-		// printR( $index );
-		$this->view->sitemap = $index;
+		$sitemap = new Sitemap;
+		$sitemap->domain = $domain;
+
+		$index = new MadTree( $sitemap->getIndex() );
+		$view->sitemap = $index;
+	}
+	function listAction() {
 	}
 	function writeAction() {
+		return 'testd';
 	}
 }

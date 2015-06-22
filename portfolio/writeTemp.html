@@ -1,0 +1,25 @@
+<link rel='stylesheet' href='~/mad/vendors/dropzone/dropzone.css' />
+<link rel='stylesheet' href='./style.css' />
+
+<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+<script src='~/mad/vendors/dropzone/dropzone.js'></script>
+<script src='./script.js'></script>
+
+<form id='portfolioWrite' class='medium-6 columns' method='post' action='./save'>
+	<input type='hidden' id='id' name='id' value='<?=$model->id?>' />
+	<input type='hidden' id='domain' name='domain' value='<?=$model->domain?>' />
+
+	<label for='title'>title</label>
+	<input type='text' name='title' id='title' value='<?=$model->title?>' required />
+
+	<label for='contents'>contents</label>
+	<textarea name='contents' id='contents' required><?=$model->contents?></textarea>
+
+	<button>create</button>
+</form>
+
+<form id='dropzone' class="dropzone medium-6 columns" action="/file/upload">
+	<div class="fallback">
+		<input name="file" type="file" multiple />
+	</div>
+</form>

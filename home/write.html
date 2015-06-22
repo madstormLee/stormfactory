@@ -1,0 +1,22 @@
+<h1>Write</h1>
+
+<form method='post' action='./save'>
+	<label for='layout'>layout</label>
+	<select id='layout' name='layout'>
+		<? foreach( $model->getLayouts() as $file ): ?>
+		<option value='<?=$file?>' <?=$model->layout==$file?'selected':'';?>><?=$file->getBasename()?></option>
+		<? endforeach; ?>
+	</select>
+	<label for='title'>title</label>
+	<input type='text' id='title' name='title' value='<?=$model->title?>' />
+	<label for='author'>author</label>
+	<input type='text' id='author' name='author' value='<?=$model->author?>' />
+	<label for='wDate'>wDate</label>
+	<input type='text' id='wDate' name='wDate' value='<?=$model->wDate?>' />
+
+	<button>Save</button>
+</form>
+
+<p class='callout panel text-center'>
+last modified date: <?=$model->uDate?>
+</p>

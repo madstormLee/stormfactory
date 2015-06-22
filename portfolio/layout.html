@@ -6,11 +6,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel='stylesheet' type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/normalize.min.css" media='all' />
-		<link rel='stylesheet' type='text/css' href="./defaultStyle.css" media='all' />
+		<link rel='stylesheet' type='text/css' href="~/style.css" media='all' />
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/vendor/modernizr.js"></script>
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/vendor/jquery.js"></script>
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/foundation.min.js"></script>
-		<script type='text/javascript' src="//stormfactory.co.kr/mad/layout/script.js"></script>
+		<script type='text/javascript' src="~/mad/layout/script.js"></script>
 	</head>
 	<body id='body'>
 		<header class='sticky'>
@@ -27,44 +27,52 @@
 				</ul>
 
 				<section class="top-bar-section">
-					<? $treeIterator = function( $sitemap, $dropdown = '' ) use (&$treeIterator) { ?>
-					<ul class="menu left <?=$dropdown?>">
-						<? foreach( $sitemap as $row ): ?>
-						<li <?=isset($row->subs)?'class="has-dropdown"':''; ?>>
-							<a href='~/<?=$row->label?>'><?=$row->label?></a>
-							<? if ( isset($row->subs) )  $treeIterator( $row->subs, 'dropdown' ); ?>
+					<? if ( $config->session->user && $config->session->company ): ?>
+					<ul class="menu left">
+						<li><a href='~/message'>message</a></li>
+						<li><a href='~/home'>home</a></li>
+						<li><a href='~/shop'>shop</a></li>
+						<li class='has-dropdown'>
+							<a href='~/erp'>erp</a>
+							<ul class='dropdown'>
+								<li><a href='~/erp/sales'>sales</a></li>
+								<li><a href='~/project'>project</a></li>
+								<li><a href='~/board'>커뮤니케이션</a></li>
+							</ul>
 						</li>
-						<? endforeach; ?>
+						<li><a href='~/info'>정보 보기</a></li>
 					</ul>
-					<? }; $treeIterator( $sitemap ); // end function ?>
-					
+					<? endif; ?>
 
 					<ul class="personal right">
 						<? if ( $config->session->user ) : ?>
-						<li class="active"><a href='~/user/logout'>logout</a></li>
+						<? if ( $config->session->user->isAdmin() ): ?>
+						<li><a href='~/install'>install</a></li>
+						<? endif; ?>
+						<li><a href='~/messenger'>messenger</a></li>
+						<li><a href='~/user/logout'>logout</a></li>
+						<li class='active'><a href='~/user/write'><?=$config->session->user->userId?></a></li>
 						<? else: ?>
 						<li class="signUp"><a href='~/user/signup'>signup</a></li>
-						<li class="active"><a href='~/user/login'>login</a></li>
+						<li><a href='~/user/login'>login</a></li>
 						<? endif; ?>
 					</ul>
 				</section>
 			</nav>
 		</header>
 
-		<nav class='pwd breadcrumbs'>
-			<a href='~/'>Home</a>
-			<a href='~/about'>about</a>
-			<b class='current'>tennis</b>
-		</nav>
-
 		<main class='columns'><?=$main?></main>
 
 		<footer class='columns'>
 			<? if( isset($config->session->project) ) : ?>
-			<span class='notice'>project: <?=$config->session->project?></span>
+			<span class='notice right medium-6 columns'>project: <?=$config->session->project?></span>
 			<? else: ?>
-			<span class='copyrights'><?=$config->info->author?> <?=$config->info->year?>::<?=$config->info->project?></span>
+			<span class='copyrights right medium-6 columns'><?=$config->info->author?> <?=$config->info->year?>::<?=$config->info->project?></span>
 			<? endif; ?>
+			<ul class='breadcrumbs left medium-6 columns'>
+				<li> <a href='/wp'>blog</a> </li>
+				<li> <a href='/ziwoo'>ziwoo</a> </li>
+			</ul>
 		</footer>
 	</body>
 </html>

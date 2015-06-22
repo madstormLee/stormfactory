@@ -24,7 +24,10 @@ class Project extends MadModel {
 		return $query;
 	}
 	function initType() {
-		$this->types = new MadJson('mad/component/model/types.json');
+		$json = new MadJson('mad/component/model/model.json');
+		$types = new MadData($json->type->options);
+		$this->types = $types->dic('value', 'type');
+		return $this;
 	}
 	function getType( $type ) {
 		if ( empty( $this->types ) ) {

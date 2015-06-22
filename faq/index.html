@@ -1,0 +1,23 @@
+<link rel='stylesheet' href='./style.css' media='all' />
+<script type='text/javascript' src="./script.js"></script>
+
+<h1>Faq</h1>
+
+<section id='index'>
+	<ul class='faq accordion' data-accordion>
+		<? foreach( $index = $model->getIndex() as $row ): ?>
+		<li class='accordion-navigation'>
+			<a href='#contents-<?=$row->id?>'><?=$row->title?></a>
+			<p id='contents-<?=$row->id?>' class='content'><?=$row->contents?></p>
+		</li>
+		<? endforeach; ?>
+	</ul>
+</section>
+
+<section id='right'>
+	<nav class='breadcrumbs'>
+		<a href='./'>index</a>
+		<a href='./write'>write</a>
+	</nav>
+	<section id='write' data-href='./write'></section>
+</section>

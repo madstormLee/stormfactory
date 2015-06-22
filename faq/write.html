@@ -1,0 +1,15 @@
+<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+<script src='./write.js'></script>
+
+<form class='write' method='post' action='./save'>
+	<input type='hidden' id='id' name='id' value='<?=$model->id?>' />
+	<input type='hidden' id='domain' name='domain' value='<?=$model->domain?>' />
+
+	<label for='title'>title</label>
+	<input type='text' name='title' id='title' value='<?=$model->title?>' required />
+
+	<label for='contents'>contents</label>
+	<textarea name='contents' id='contents' required><?=$model->contents?></textarea>
+
+	<button>create</button>
+</form>

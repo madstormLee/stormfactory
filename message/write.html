@@ -1,0 +1,20 @@
+<script src='./script.js'></script>
+
+<h1>message write</h1>
+
+<form id='model' method='post' action='./save' data-abide>
+	<input type='hidden' id='id' name='id' value="<?=$model->id?>" />
+	<input type='hidden' id='domain' name='domain' value="<?=$model->domain?>" />
+	<input type='hidden' id='sender' name='sender' value="<?=$model->sender?>" readonly />
+
+	<div class='receiver-field'>
+		<label for='receiver'>receiver</label>
+		<input type='text' id='receiver' name='receiver' value="<?=$model->receiver?>" data-exists-href='~/user/isId' />
+		<small class="error">Name is required and must be a string.</small>
+	</div>
+
+	<label for='contents'>Contents</label>
+	<textarea id='contents' name='contents'><?=$model->contents?></textarea>
+
+	<button>확인</button>
+</form>

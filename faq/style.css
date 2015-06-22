@@ -1,0 +1,15 @@
+ul.faq {
+}
+ul.faq.accordion .accordion-navigation > a,
+ul.faq.accordion dd > a {
+	padding: 0;
+	background: #ccf;
+	margin: 1px;
+	border: 1px solid #99f;
+	text-indent: 1rem;
+	color: #000;
+}
+ul.faq.accordion .accordion-navigation > a:hover,
+ul.faq.accordion dd > a:hover {
+	background: #aaf;
+}

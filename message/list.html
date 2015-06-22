@@ -1,0 +1,15 @@
+<h1>List</h1>
+
+<ul>
+	<? foreach( $index as $row ): ?>
+	<li>
+		<dl>
+			<dt>From : <?=$row->sender?></dt>
+			<dd><?=$row->contents?></dd>
+			<dd class='wDate'>
+				<?=$row->wDate?>
+			</dd>
+		</dl>
+	</li>
+	<? endforeach; ?>
+</ul>

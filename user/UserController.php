@@ -34,23 +34,79 @@ class UserController extends MadController {
 		$this->model->fetch( $this->params->id );
 	}
 	function saveAction() {
-		return $this->model->setData( $this->params )->save();
+		$model = $this->model;
+		$model->setData( $this->params );
+
+		if ( preg_match( "!user/write$!", $this->router->referer ) ) {
+			if ( ! $this->session->user ) {
+				throw new Exception( 'need login.' );
+			}
+			if ( ! $this->session->user->isAdmin() ) {
+				throw new Exception( 'you need login as admin.' );
+			}
+			if( ! $model->userLevel ) {
+				$model->userLevel = 200;
+			}
+			$saveMode = 'write';
+		} elseif ( preg_match( "!user/signup$!", $this->router->referer ) ) {
+			$saveMode = 'signup';
+			$model->userLevel = 300;
+		} else {
+			throw new Exception( 'illegal access' );
+		}
+
+		$result = $model->save();
+
+		if ( ! $result ) {
+			throw new Exception('Save Error');
+		}
+
+		// code
+		if ( $saveMode == 'write' ) {
+			return $result;
+		}
+		$json = new MadJson("$this->component/verify.json");
+		$code = uniqid();
+		$json->$code = $model->userId;
+		$json->save();
+
+		// message
+		$message = new MadView( "$this->component/greetingMail.html" );
+		$message->code = $code;
+		$message->model = $model;
+
+		$mail = new MadMail;
+		$mail->to( "$model->userId <$model->email>" );
+		$mail->from("스톰팩토리 <{$this->info->email}>");
+		$mail->subject("스톰팩토리 메일 확인");
+		$mail->message( $message );
+		if ( ! $mail->send() ) {
+			throw new Exception( 'Email sending failed' );
+		}
+
+		return $result;
+	}
+	function verifyAction() {
+		$get = $this->params;
+		$model = $this->model;
+
+		$json = new MadJson("$this->component/verify.json");
+		if ( ! $userId = $json->{$get->code} ) {
+			throw new Exception( 'wrong code' );
+		}
+		$model->fetchUserId( $userId );
+		$model->userLevel = 200;
+
+		if ( ! $model->save() ) {
+			throw new Exception( 'save error' );
+		}
+		unset( $json->{$get->code} );
+		$json->save();
 	}
 	function deleteAction() {
 		return $this->model->delete( $this->get->id );
 	}
-	function saveSignupAction() {
-		$post = $this->params;
-		$model = $this->model;
-
-		if ( $model->idExists( $post->userid ) ) {
-			throw new Exception('이미 사용중인 아이디입니다.');
-		}
-		$post->level = 100;
-		$post->pw = md5( $post->pw );
-
-		$model->setData( $post )->save();
-		$this->js->alert('가입 승인이 요청되었습니다.')->replace('./login');
+	function signinAction() {
 	}
 	function signoffAction() {
 	}
@@ -78,10 +134,11 @@ class UserController extends MadController {
 	}
 	function isIdAction() {
 		$post = $this->params;
-		if ( ! $post->id ) {
+		if ( ! $post->userId ) {
 			throw new Exception( 'illigal appoach' );
 		}
-		return ! ! $this->query->count("userid like '$post->id'");
+		$query = "select count(*) from user where userId like '$post->userId'";
+		return current($this->db->query( $query )->fetch( PDO::FETCH_ASSOC));
 	}
 	function isEmailAction() {
 		$post = $this->params;
