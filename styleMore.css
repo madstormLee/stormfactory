@@ -1,5 +1,5 @@
-@import url(http://www.stormfactory.co.kr/mad/file/css?file=style.css);
-
+#firstPage {
+}
 #right h2 {
 	background: transparent;
 	color: white;
@@ -43,15 +43,4 @@ footer .breadcrumbs li a {
 	color: #fff;
 	padding: 0;
 }
-nav.pwd {
-	position: absolute;
-	right: 1rem;
-	z-index: 1000;
-}
-nav.pwd a {
-	font-size: .6rem;
-}
-nav.pwd > *::before {
-	color: #aaaaaa;
-	content: ">";
-}
+
