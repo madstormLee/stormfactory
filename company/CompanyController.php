@@ -4,11 +4,11 @@ class CompanyController extends MadController {
 		$query = new MadQuery( 'Group' );
 		$query->where( "domain like 'company'" );
 		$query->limit();
-		print $query;
 
 		$result = $this->db->query( $query );
-		varDump( $result );
 		$this->view->index = $this->db->fetchAll( $this->model );
+	}
+	function statusAction() {
 	}
 	function selectAction() {
 		$group = new Group;

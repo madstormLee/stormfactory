@@ -1,0 +1,15 @@
+{
+	"info": {
+		"title": "Sf",
+		"author": "Madstorm",
+		"year": "2015",
+		"project": "Storm Factory"
+	},
+	"instances": {
+		"session": "MadSession::getInstance()",
+		"company": "Company::session()",
+		"user": "User::session()",
+		"db": "new MadDb('sqlite:data.db')",
+		"layout": "new MadView('layout.html')"
+	}
+}

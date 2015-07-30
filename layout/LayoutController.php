@@ -24,7 +24,4 @@ class LayoutController extends MadController {
 	}
 	function listAction() {
 	}
-	function writeAction() {
-		return 'testd';
-	}
 }

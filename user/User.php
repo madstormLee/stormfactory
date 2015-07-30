@@ -8,6 +8,12 @@ class User extends MadModel {
 		$this->initLevels();
 		parent::__construct( $id );
 	}
+	public static function session() {
+		if ( ! isset( $_SESSION['user'] ) ) {
+			$_SESSION['user'] = new self;
+		}
+		return $_SESSION['user'];
+	}
 	public static function getSession() {
 		if ( isset( $_SESSION['user'] ) ) {
 			return $_SESSION['user'];
@@ -26,11 +32,6 @@ class User extends MadModel {
 				'default' => 300,
 			) );
 		}
-	}
-	function install() {
-		$query = new MadScheme( $this );
-		$db = $this->getDb();
-		return $db->exec( $query );
 	}
 	function save() {
 		if ( empty($this->id) ) {
