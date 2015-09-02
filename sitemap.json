@@ -4,11 +4,46 @@
 		"component": "user"
 	},
 	"persona": {
-		"label":"Persona",
+		"label":"persona",
 		"component": "mad/user/group"
 	},
-	"image": {
-		"label":"Image",
-		"component": "mad/file/image"
+	"contents": {
+		"label":"contents",
+		"component": "contents",
+		"subs": {
+			"write": {
+				"label": "contents write",
+				"component": "contents",
+				"action": "write",
+				"prepare": [
+					{
+						"condition": "! isset( $this->session->user )",
+						"exception": "need login"
+					}
+				]
+			},
+			"save": {
+				"label": "contents save",
+				"component": "contents",
+				"action": "save",
+				"prepare": [
+					{
+						"condition": "! isset( $this->session->user )",
+						"exception": "need login"
+					}
+				]
+			},
+			"delete": {
+				"label": "contents delete",
+				"component": "contents",
+				"action": "delete",
+				"prepare": [
+					{
+						"condition": "! isset( $this->session->user )",
+						"exception": "need login"
+					}
+				]
+			}
+		}
 	}
 }

@@ -3,7 +3,7 @@
 <h1>Contents</h1>
 
 <section class="tile row">
-	<? foreach( $index as $row ): ?>
+	<? foreach( $index = $model->getIndex() as $row ): ?>
 	<? if ( $row->tie > 0 ) : ?>
 	<? $ties = $row->tie + 1; ?>
 	<div class='tie scale-<?=$row->scale * 2?> large-3 medium-4 small-12'>
@@ -29,9 +29,9 @@
 
 	<? if( isset($config->session->user) ): ?>
 		<? if( isset( $ties ) && $ties > 0 ): ?>
-		<div id='write' class='scale-1  medium-12 small-12' data-href='./write?parentId=<?=$get->parentId?>'>
+		<div id='write' class='scale-1  medium-12 small-12' data-href='./write?parentId=<?=$params->parentId?>'>
 		<? else: ?>
-		<div id='write' class='scale-1 medium-3 small-6' data-href='./write?parentId=<?=$get->parentId?>'></div>
+		<div id='write' class='scale-1 medium-3 small-6' data-href='./write?parentId=<?=$params->parentId?>'></div>
 		<? endif; ?>
 	<? endif; ?>
 		<? if ( isset( $ties ) ) --$ties; ?>
@@ -39,5 +39,3 @@
 	</div>
 	<? endif; ?>
 </section>
-
-<section id='images' class="reveal-modal" data-reveal></section>

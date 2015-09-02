@@ -29,11 +29,11 @@ class User extends MadModel {
 				'localAdmin' => 5,
 				'member' => 200,
 				'user' => 255,
-				'default' => 300,
+				'guest' => 1000,
 			) );
 		}
 	}
-	function save() {
+	function save( $data=null ) {
 		if ( empty($this->id) ) {
 			$this->wDate = date('Y-m-d H:i:s');
 			$this->userPw = sha1($this->userPw);
@@ -48,7 +48,16 @@ class User extends MadModel {
 		return $this->getLevels()->find($level);
 	}
 	function getIndex() {
-		return glob( "$this->dir/*$this->extension");
+		$index = new MadIndex( $this );
+		$query = $index->getQuery();
+		if ( $this->id ) {
+			$query->where( "( level > $this->level or id = $this->id )" );
+		} else {
+			// $query->where( "level > $this->level" );
+		}
+
+		$query->order("uDate desc");
+		return $index;
 	}
 	public function getLevels() {
 		return $this->levels;
@@ -100,6 +109,16 @@ class User extends MadModel {
 		$this->data = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $this;
 	}
+	function fetchEmail( $email ) {
+		printR( $this->getSetting()->userLevel->options );
+		$query = "select * from $this->name where email=:email";
+		$stmt = $this->getDb()->prepare( $query );
+		if( ! $stmt->execute( array( 'email' => $email ) ) ) {
+			throw new Exception('No email : ' . $email);
+		}
+		$this->data = $stmt->fetch(PDO::FETCH_ASSOC);
+		return $this;
+	}
 	function fetchLogin( $userId, $userPw ) {
 		$this->fetchUserId( $userId );
 		if( $this->userPw != sha1( $userPw ) ) {
@@ -116,23 +135,44 @@ class User extends MadModel {
 		return true;
 	}
 	function setLevel( $level = 1000 ) {
-		$this->level = $level;
+		$this->userLevel = $level;
 		return $this;
 	}
-	public function getLevel() {
-		if ( isset( $this->level ) ) {
-			return $this->level;
+	public function getLevel( $name='' ) {
+		if ( ! empty( $name ) ) {
+			if ( isset( $this->levels->$name ) ) {
+				return $this->levels->$name;
+			} else {
+				return $this->levels->guest;
+			}
 		}
-		if ( ! isset($this->levels->default) ) {
-			return 300;
+		if ( ! isset( $this->userLevel ) ) {
+			$this->userLevel = $this->levels->guest;
 		}
-		return $this->levels->default;
+		return $this->userLevel;
 	}
 	function getDefaultLevel() {
-		if ( ! isset($this->levels->default) ) {
-			$this->levels->default = 300;
+		if ( ! isset($this->levels->guest) ) {
+			$this->levels->guest = 300;
 		}
-		return $this->levels->default;
+		return $this->levels->guest;
+	}
+	// todo: from MadRouter. intergrate this.
+	function checkAuth() {
+		if ( ! isset( $this->auth ) ) {
+			return false;
+		}
+		if ( ! $user = self::session() ) {
+			return false;
+		}
+		if ( $user->hasAuth( $this->authLevel ) ) {
+			return false;
+		}
+		if ( $this->authPath == MadRouter::getInstance()->getComponentPath() ) {
+			return false;
+		}
+		header( "Location: $this->authPath" );
+		// throw new Exception('권한이 부족합니다.');;
 	}
 	public function __call( $method, $args ) {
 		if ( 0 !== strpos( $method , 'is' ) ) {
@@ -145,6 +185,6 @@ class User extends MadModel {
 		if ( ! $level = $this->levels->$target ) {
 			return false;
 		}
-		return $this->level === $level;
+		return $this->userLevel === $level;
 	}
 }

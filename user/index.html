@@ -3,48 +3,37 @@
 <form class='simpleSearch changeSubmit' method='get' action='?'>
 	<input type='radio' id='levelAll' name='level' value='' <?=(! $params->level)?'checked':''?> />
 	<label for='levelAll'>모두 보기</label>
-	<? foreach( $model->getConfig('level')->data as $row ): ?>
-	<? if ( $row->value <= $config->session->user->getLevel() ) continue; ?>
-	<input type='radio' id='level<?=$row->value?>' name='level' value='<?=$row->value?>' <?=($row->value == $params->get->level)?'checked':''?> />
+	<? foreach( $model->getSetting('userLevel')->options as $row ): ?>
+	<? if ( $row->value <= $config->user->getLevel() ) continue; ?>
+	<input type='radio' id='level<?=$row->value?>' name='level' value='<?=$row->value?>' <?=($row->value == $config->params->level)?'checked':''?> />
 	<label for='level<?=$row->value?>'><?=$row->label?></label>
 	<? endforeach; ?>
 </form>
 
-<section id='index'>
+<ul id='userIndex' class='large-block-grid-4 medium-block-grid-3'>
 	<? foreach( $index = $model->getIndex() as $row ): ?>
-	<dl>
-		<dt>user Id</dt>
-		<dd><a href='./view?id=<?=$row->id?>'><?=$row->userid?></a></dd>
-		<dt>email</dt>
-		<dd><a href='mailto:<?=$row->email?>'><?=$row->email?></a></dd>
-		<dt>level</dt>
-		<dd><?=$row->levelName?></dd>
-		<dt>groups</dt>
-		<dd>
-		<nav class='group'>
-			<? foreach( $model->group as $groupName ): ?>
-			<a href='~/UserGroup/view?id=<?=$groupName?>'><?=$groupName?></a>
-			<? endforeach; ?>
-		</nav>
-		</dd>
-		<dt>buttons</dt>
-		<dd class='buttons'>
-		<a href='./write?id=<?=$row->id?>'>수정</a>
-		<a href='./delete?id=<?=$row->id?>'>삭제</a>
+	<li>
+	<dl class='row'>
+		<dt class='small-4 columns text-right'>user Id</dt>
+		<dd class='small-8 columns'><a href='./view?id=<?=$row->id?>'><?=$row->userId?></a></dd>
+		<dt class='small-4 columns text-right'>email</dt>
+		<dd class='small-8 columns'><a href='mailto:<?=$row->email?>'><?=$row->email?></a></dd>
+		<dt class='small-4 columns text-right'>level</dt>
+		<dd class='small-8 columns'><?=$row->userLevel?></dd>
+		<dt class='small-4 columns text-right'>buttons</dt>
+		<dd class='small-8 columns'>
+			<a href='./write?id=<?=$row->id?>'>수정</a>
+			<a href='./delete?id=<?=$row->id?>'>삭제</a>
 		</dd>
 
 	</dl>
+	</li>
 	<? endforeach; ?>
 
-	<? if ( $index->isEmpty() ) : ?>
-	<p class='notice'>No searched list.</p>
-	<? endif; ?>
+</ul>
 
-	<?=$index->getPageNavi()?>
-</section>
+<? if ( $index->isEmpty() ) : ?>
+<p class='panel'>No searched list.</p>
+<? endif; ?>
 
-<section id='right'>
-	<nav class='component'>
-		<a href='./write'>write</a>
-	</nav>
-</section>
+<?=$index->getPageNavi()?>

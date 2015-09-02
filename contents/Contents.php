@@ -1,7 +1,6 @@
 <?
 class Contents extends MadModel {
 	protected $types = array();
-
 	function getSetting( $type='' ) {
 		if ( empty( $this->setting ) ) {
 			$this->setSetting('contents/model.json');
@@ -11,37 +10,30 @@ class Contents extends MadModel {
 		}
 		return $this->setting;
 	}
-	function fetchDefault() {
-		$this->data = $this->getSetting()->dic('default')->getData();
-		return $this;
-	}
 	function getStack( $parentId=0 ) {
 		$query = "select * from Contents where parentId=$parentId and type='stack'";
 		return $this->getDb()->query($query)->fetchAll(PDO::FETCH_CLASS);
 	}
 	function fetch( $id='' ) {
 		if ( empty( $id ) ) {
-			return $this;
+			return $this->fetchDefault();
 		}
 		$query = new MadQuery(get_class($this));
 		$query->where( "id=$id" );
 
 		$db = $this->getDb();
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$this->data = $db->query( $query )->fetch(PDO::FETCH_ASSOC);
 		return $this;
 	}
-	function getPersona() {
-		return new MadData;
+	function fetchDefault() {
+		$this->data = $this->getSetting()->dic('default')->getData();
+		return $this;
 	}
 	function getStatuses() {
 		return new MadJson('project/statuses.json');
 	}
 	function getCategories() {
 		return $this->setting->category->options;
-	}
-	function getDb() {
-		return MadConfig::getInstance()->db;
 	}
 	function insert() {
 		$this->wDate = date('Y-m-d H:i:s');
@@ -63,7 +55,6 @@ class Contents extends MadModel {
 		$query->update( $this->data );
 
 		$db = $this->getDb();
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		$statement = $db->prepare( $query );
 		$result = $statement->execute( $query->data() );
@@ -74,7 +65,6 @@ class Contents extends MadModel {
 		$query = "delete from Contents where id=?";
 
 		$db = $this->getDb();
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		$statement = $db->prepare( $query );
 		$result = $statement->execute( array($id) );

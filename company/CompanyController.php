@@ -9,6 +9,12 @@ class CompanyController extends MadController {
 		$this->view->index = $this->db->fetchAll( $this->model );
 	}
 	function statusAction() {
+		if ( $this->params->company ) {
+			$company = $this->params->company;
+		} else {
+			$company = $this->router->company;
+		}
+		$this->model->fetchLabel( $company );
 	}
 	function selectAction() {
 		$group = new Group;

@@ -1,34 +1,18 @@
 <?
 class UserController extends MadController {
-	function init() {
-		parent::init();
-		if ( ! strpos($this->router->backUrl, 'user' ) ) {
-			$this->session->after = $this->router->backUrl;
-		}
-		$query = new MadQuery('User');
-		if ( ! $query->isTable() ) {
-			$this->installAction();
-		}
-	}
 	function indexAction() {
 		$get = $this->params;
 		$model = $this->model;
-		$sessionUser = $model::getSession();
-
-		$query = new MadQuery('User');
-		$query->where( "( level > $sessionUser->level or id = $sessionUser->id )" );
-
-		if ( $get->level ) {
-			$query->where( "level=$get->level" );
-		} else {
-			$query->where( 'level <= 100' );
-		}
-
-		$query->order("utime desc");
-
-		$this->view->index = $query;
+		$model->fetch( $this->user->id );
 	}
 	function viewAction() {
+		$user = $this->user;
+		$get = $this->params;
+		if( $user->is('admin') && $get->id ) {
+			$this->model->fetch( $get->id );
+		} else {
+			$this->model = $this->user;
+		}
 	}
 	function writeAction() {
 		$this->model->fetch( $this->params->id );
@@ -110,7 +94,42 @@ class UserController extends MadController {
 	}
 	function signoffAction() {
 	}
+	function googleAuthAction() {
+		$post = $this->params;
+
+		$google = $this->createModel( 'GoogleOAuth' );
+		$google->setIdToken( $post->id_token );
+		$google->auth();
+
+		if ( $google->error_description ) {
+			throw new Exception($google->error_description );
+		}
+		$model = $this->model;
+		$model->fetchEmail( $google->email );
+		if ( $model->id ) {
+			$this->session->user = $model;
+			return true;
+		}
+		$model->userId = $google->sub;
+		$model->email = $google->email;
+		$model->userLevel = 200;
+		$id = $model->save();
+
+		$model->fetch( $id );
+		$this->session->user = $model;
+
+		return true;
+	}
 	function loginAction() {
+		if ( ! strpos($this->router->backUrl, 'user' ) ) {
+			$this->session->after = $this->router->backUrl;
+		}
+
+		if( $this->user->isLogin() ) {
+			$this->js->replace('~/');
+		}
+		$json = new MadJson("$this->component/googleOAuth.json");
+		$this->view->api = $json->web;
 	}
 	function registSessionAction() {
 		$post = $this->params;
@@ -119,7 +138,7 @@ class UserController extends MadController {
 		$model->fetchLogin( $post->userId, $post->userPw );
 
 		$this->session->user = $model;
-		$this->js->replace( $this->router->project . '/' );
+		return $model->isLogin();
 	}
 	function logoutAction() {
 		unset( $this->session->user );
@@ -195,35 +214,9 @@ class UserController extends MadController {
 
 		$this->js->alert( "you logged in as " . $this->persona->label )->replace( $referer );
 	}
-
-	function migrateAction() {
-		$table = get_class($this->model);
-		$mg = $table . '_migrate';
-
-		$query = "alter table $table rename to $mg";
-		// $this->db->exec( $query );
-		$scheme = new MadScheme( $this->model );
-		$result = $this->db->exec( $scheme );
-
-		$query = "PRAGMA table_info($mg)";
-		$mgInfo = new MadData($this->db->query( $query)->fetchAll(PDO::FETCH_CLASS));
-
-		$query = "PRAGMA table_info($table)";
-		$info = new MadData($this->db->query( $query)->fetchAll(PDO::FETCH_CLASS));
-
-		$columns = $mgInfo->dic('name')->intersect($info->dic('name')->getData() )->implode(',');
-
-		$query = "insert into $table ($columns) select $columns from $mg";
-		$result = $this->db->exec( $query );
-		return $result;
-	}
-	function installAction() {
-		$this->dropAction();
-		$query = new MadScheme( $this->model );
-		return $this->db->exec( $query );
-	}
-	function dropAction() {
-		$query = "drop table " . get_class($this->model);
-		return $this->db->exec( $query );
+	function googleAction() {
+		$data = print_R( $this->params, $true ) . "\n\n";
+		@file_put_contents( "$this->component/google.log", $data, FILE_APPEND );
+		die;
 	}
 }

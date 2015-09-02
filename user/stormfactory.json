@@ -1,0 +1,18 @@
+{
+	"layout": {
+	},
+	"header": {
+	},
+	"footer": {
+	},
+	"sections": [
+	{
+		"class": "company medium-6 columns",
+		"dataHref": "~/company/status"
+	},
+	{
+		"class": "user right medium-3 columns",
+		"dataHref": "~/user/view"
+	}
+	]
+}

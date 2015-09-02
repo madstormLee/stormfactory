@@ -1,4 +1,9 @@
-<h1>First Page</h1>
+<style>
+section.user {
+	border: 1px solid #000;
+}
+</style>
 
-<section id='company' class='medium-6 columns' data-href='~/company/status'></section>
-<section id='user' class='medium-6 columns' data-href='~/user/status'></section>
+<? foreach( $index->sections as $section ): ?>
+<section class="<?=$section->class?>" data-href="<?=$section->dataHref?>"></section>
+<? endforeach; ?>

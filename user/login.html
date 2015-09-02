@@ -1,6 +1,27 @@
+<meta name="google-signin-client_id" content="<?=$api->client_id?>">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script>
+	function onSignIn(googleUser) {
+		var profile = googleUser.getBasicProfile();
+		var id_token = googleUser.getAuthResponse().id_token;
+		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		console.log('Name: ' + profile.getName());
+		console.log('Image URL: ' + profile.getImageUrl());
+		console.log('Email: ' + profile.getEmail());
+		console.log('id_token: ' + id_token );
+	}
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function () {
+			console.log('User signed out.');
+		});
+	}
+</script>
+
 <h1>User Login</h1>
 
-<form id="Login" class='medium-9 columns' method='post' action='registSession'>
+<form id="Login" class='medium-9 columns' method='post' action='./registSession'>
 	<input type='hidden' name='returnUrl' value='<?=$params->returnUrl?>' />
 
 	<label for='userId'>User ID</label>
@@ -12,8 +33,10 @@
 </form>
 
 <section id='right'>
-	<nav class='buttons breadcrumbs'>
+	<nav class='buttons breadcrumbs' style='margin-bottom: 1rem;'>
 		<a href='./findIdPw'>ID/PWD 찾기</a>
 		<a href='./signup'>신규가입</a>
 	</nav>
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<a href="#" onclick="signOut();">Sign out</a>
 </section>

@@ -6,7 +6,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel='stylesheet' type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/normalize.min.css" media='all' />
-		<link rel='stylesheet' type='text/css' href="~/style.css" media='all' />
+		<link rel='stylesheet' type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.min.css" media='all' />
+		<link rel='stylesheet' type='text/css' href="./style.css" media='all' />
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/vendor/modernizr.js"></script>
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/vendor/jquery.js"></script>
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/foundation.min.js"></script>
@@ -18,8 +19,8 @@
 
 			<nav class="top-bar" data-topbar role="navigation">
 				<ul class="title-area">
-					<? if ( $config->session->user && $config->session->company ): ?>
-					<li class="name"><h1><a id='logo' href="~/"><?=$config->session->company->label?></a></h1></li>
+					<? if ( $config->user && $config->company ): ?>
+					<li class="name"><h1><a id='logo' href="~/"><?=$config->company->label?></a></h1></li>
 					<? else: ?>
 					<li class="name"><h1><a id='logo' href="~/"><?=$config->info->title?></a></h1></li>
 					<? endif; ?>
@@ -27,7 +28,7 @@
 				</ul>
 
 				<section class="top-bar-section">
-					<? if ( $config->session->user && $config->session->company ): ?>
+					<? if ( $config->user && $config->company ): ?>
 					<ul class="menu left">
 						<li><a href='~/message'>message</a></li>
 						<li><a href='~/home'>home</a></li>
@@ -41,17 +42,29 @@
 							</ul>
 						</li>
 						<li><a href='~/info'>정보 보기</a></li>
+
+						<!-- xp intergrated -->
+						<li class='has-dropdown'>
+							<a href='~/xp/'>xp</a>
+							<ul class='dropdown'>
+								<li><a href='/xp/todo'>todo</a></li>
+							</ul>
+						</li>
+						<!-- end of xp intergrated -->
+
 					</ul>
 					<? endif; ?>
 
 					<ul class="personal right">
-						<? if ( $config->session->user ) : ?>
-						<? if ( $config->session->user->isAdmin() ): ?>
-						<li><a href='~/install'>install</a></li>
-						<? endif; ?>
-						<li><a href='~/messenger'>messenger</a></li>
-						<li><a href='~/user/logout'>logout</a></li>
-						<li class='active'><a href='~/user/write'><?=$config->session->user->userId?></a></li>
+						<? if ( $config->user->isLogin() ) : ?>
+						<li class='has-dropdown active'>
+							<a href='~/user/write'><?=$config->user->userId?></a>
+							<ul class='dropdown'>
+								<li><a href='~/contents/dashboard'>dashboard</a></li>
+								<li><a href='~/user/logout'>logout</a></li>
+							</ul>
+						</li>
+
 						<? else: ?>
 						<li class="signUp"><a href='~/user/signup'>signup</a></li>
 						<li><a href='~/user/login'>login</a></li>
@@ -64,15 +77,7 @@
 		<main class='columns'><?=$main?></main>
 
 		<footer class='columns'>
-			<? if( isset($config->session->project) ) : ?>
-			<span class='notice right medium-6 columns'>project: <?=$config->session->project?></span>
-			<? else: ?>
 			<span class='copyrights right medium-6 columns'><?=$config->info->author?> <?=$config->info->year?>::<?=$config->info->project?></span>
-			<? endif; ?>
-			<ul class='breadcrumbs left medium-6 columns'>
-				<li> <a href='/wp'>blog</a> </li>
-				<li> <a href='/ziwoo'>ziwoo</a> </li>
-			</ul>
 		</footer>
 	</body>
 </html>

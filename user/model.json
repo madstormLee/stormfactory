@@ -21,6 +21,25 @@
 		"max": 40,
 		"constraint": "not null"
 	},
+	"userType": {
+		"id": "userType",
+		"name": "userType",
+		"type": "radio",
+		"constraint": "not null",
+		"default": "255",
+		"options": {
+			"company": {
+				"id": "company",
+				"label": "company",
+				"value": "company"
+			},
+			"member": {
+				"id": "member",
+				"label": "member",
+				"value": "member"
+			}
+		}
+	},
 	"userLevel": {
 		"id": "userLevel",
 		"name": "userLevel",
@@ -43,15 +62,10 @@
 				"label": "LocalAdmin",
 				"value": 5
 			},
-			"dealer": {
-				"id": "dealer",
-				"label": "Dealer",
-				"value": 10
-			},
-			"shopOwner": {
-				"id": "shopOwner",
-				"label": "Shop Owner",
-				"value": 50
+			"member": {
+				"id": "member",
+				"label": "LocalAdmin",
+				"value": 200
 			},
 			"request": {
 				"id": "request",
